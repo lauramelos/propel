@@ -1,0 +1,56 @@
+/*
+    ColorBox Core Style:
+    The following CSS is consistent between example themes and should not be altered.
+*/
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+#cboxOverlay{position:fixed; width:100%; height:100%;}
+#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
+#cboxContent{position:relative;}
+#cboxLoadedContent{overflow:auto;}
+#cboxTitle{margin:0;}
+#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+.cboxPhoto{float:left; margin:auto; border:0; display:block;}
+.cboxIframe{width:100%; height:100%; display:block; border:0;}
+
+/* 
+    User Style:
+    Change the following styles to modify the appearance of ColorBox.  They are
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+#cboxOverlay{background:#fff;}
+#colorbox{ }
+    #cboxTopLeft{width:17px; height:26px; background:url(../_img/modal/borders.png) no-repeat 0 0;}
+    #cboxTopCenter{height:26px; background:url(../_img/modal/top-middle.png) repeat-x 0 0;}
+    #cboxTopRight{width:17px; height:26px; background:url(../_img/modal/borders.png) no-repeat -17px 0;}
+    #cboxBottomLeft{width:17px; height:14px; background:url(../_img/modal/borders.png) no-repeat 0 -26px;}
+    #cboxBottomCenter{height:14px; background:url(../_img/modal/bottom-middle.png) repeat-x 0 0;}
+    #cboxBottomRight{width:17px; height:14px; background:url(../_img/modal/borders.png) no-repeat -17px -26px;}
+    #cboxMiddleLeft{width:17px; background:url(../_img/modal/left-middle.png) repeat-y 0 0;}
+    #cboxMiddleRight{width:17px; background:url(../_img/modal/right-middle.png) repeat-y 0 0;}
+    #cboxContent{background:#d9d9d9; overflow:hidden; }
+        #cboxError{padding:50px; border:1px solid #ccc;}
+        #cboxLoadedContent{margin:19px 29px 29px 29px;}
+        #cboxTitle{position:absolute; bottom:0px; left:0; text-align:center; width:100%; color:#999;}
+        #cboxCurrent{position:absolute; bottom:0px; left:100px; color:#999;}
+        #cboxSlideshow{position:absolute; bottom:0px; right:42px; color:#444;}
+        #cboxPrevious{position:absolute; bottom:0px; left:0; color:#444;}
+        #cboxNext{position:absolute; bottom:0px; left:63px; color:#444;}
+        #cboxLoadingOverlay{background:#d9d9d9 url(images/loading.gif) no-repeat 5px 5px;}
+        #cboxClose{ z-index:999; position:absolute; top:0px; right:17px; display:block; width:42px; height:42px; background: url('../_img/modal/close.png') 0 0 no-repeat; }
+        #cboxClose:hover { background: url('../_img/modal/close.png') -68px 0 no-repeat; }
+
+/*
+  The following fixes a problem where IE7+ replaces a PNG's alpha transparency with a black fill
+  when an alpha filter (opacity change) is set on the element or ancestor element.
+*/
+.cboxIE #cboxTopLeft,
+.cboxIE #cboxTopCenter,
+.cboxIE #cboxTopRight,
+.cboxIE #cboxBottomLeft,
+.cboxIE #cboxBottomCenter,
+.cboxIE #cboxBottomRight,
+.cboxIE #cboxMiddleLeft,
+.cboxIE #cboxMiddleRight {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
+}

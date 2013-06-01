@@ -1,0 +1,16 @@
+/* CSS Document */
+label.error {display: block; color:#FFFFFF;	padding: 10px;	float:left;	}
+	input.error{ background-color:#FF0000!important; color:#FFFFFF!important;}
+	
+	input.error placeholder{color:#FFFFFF!important;}
+	
+
+input.error::-webkit-input-placeholder {
+  color: white;
+}
+input.error::-moz-placeholder {
+  color: white;
+}
+input.error::-ms-input-placeholder {
+  color: white;
+}

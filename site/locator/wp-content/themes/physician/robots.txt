@@ -1,0 +1,7 @@
+# robots.txt for http://www.intersectent.com/
+
+User-agent: *
+Disallow: /stage/
+Disallow: /toolkit/
+Disallow: /live_stage/
+Disallow: /mini_stage/
