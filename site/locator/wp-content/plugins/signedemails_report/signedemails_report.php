@@ -26,8 +26,8 @@ function wp_addreport_options() {
  <table><tr><td>Status Email:</td>
  <td><select name="filtra">
  <option value=>All</option>
- <option value="where enviado=0" <? If ($_POST['filtra']=='where enviado=0') echo 'selected';?>>Needs Physician Results</option>
- <option value="where enviado=1" <? If ($_POST['filtra']=='where enviado=1') echo 'selected';?>>Mail Sent</option>
+ <option value="where enviado=0" <? If ($_POST['filtra']=='where enviado=0') echo 'selected';?>>Suscribed</option>
+ <option value="where enviado=1" <? If ($_POST['filtra']=='where enviado=1') echo 'selected';?>>Unsuscribed</option>
  </select>
  </td><td><input type="submit" value="Go"></td></tr>
  </table>
@@ -49,8 +49,10 @@ $res_emails = $wpdb->get_results( $query_link );
 <tr style="color:#9c9c9c; font-size:14px; font-family:Arial, Helvetica, sans-serif; font-weight:bold; ">
 <th id="cb" class="manage-column column-cb check-column" >Name</th>
 <th id="cb" class="manage-column column-cb check-column" >Email</th>
-<th id="cb" class="manage-column column-cb check-column">Zip</th>
-<th id="cb" class="manage-column column-cb check-column">Distance</th><th id="cb" class="manage-column column-cb check-column" >Satus</th>
+<th id="cb" class="manage-column column-cb check-column" >Zip</th>
+<th id="cb" class="manage-column column-cb check-column" >Distance</th>
+<th id="cb" class="manage-column column-cb check-column" >Staus</th>
+<th id="cb" class="manage-column column-cb check-column" >Mails Sent</th>
 </tr>
 <?
  
@@ -61,20 +63,17 @@ foreach ($res_emails as $sigema){
 <td><?=$sigema->Email?></td>
 <td><?=$sigema->Zip?></td>
 <td><?=$sigema->Distance?></td>
-<td><? if ($sigema->enviado == 0) echo '<span style="color:#990000">Needs Physician Results</span>'; else echo '<span style="color:#006633">Mail Sent</span>';?></td>
+<td><? if ($sigema->enviado == 0) echo '<span style="color:#990000">Suscribed</span>'; else echo '<span style="color:#006633">Unsuscribed</span>';?></td>
+<td><?=$sigema->count?></td>
 </tr>
-<?
-}
-
-?>
+<? } ?>
 </table>
 <?
 }
 
 function wp_addreport() {
-	add_menu_page('Users From No Results Form', 'Users From No Results Form', 'manage_options', 'wp_addreport', 'wp_addreport_options','http://67.222.18.91/~propel/_img/content/doctor.png' );
-    //add_options_page( 'Report Signed Emails', 'Report Signed Emails', 'manage_options', 'wp_addreport', 'wp_addreport_options' );
+  add_menu_page('Users From No Results Form', 'Users From No Results Form', 'manage_options', 'wp_addreport', 'wp_addreport_options','http://67.222.18.91/~propel/_img/content/doctor.png' );
+  //add_options_page( 'Report Signed Emails', 'Report Signed Emails', 'manage_options', 'wp_addreport', 'wp_addreport_options' );
 }
-
 add_action( 'admin_menu', 'wp_addreport' );
 ?>

@@ -319,7 +319,7 @@ ul#content-nav li.sep { width:16px; text-align:center; }
 .left-container-content p { line-height:19px; width:500px; }
 a.arrow-right { padding-right:14px; background: url('_img/content/arrow-right-off.png') 100% 50% no-repeat; }
 a.arrow-right:hover { background: url('_img/content/arrow-right-on.png') 100% 50% no-repeat; }
-a.arrow-download { padding-right:14px; background: url('../_img/content/arrow-download-off.png') 100% 50% no-repeat; }
+a.arrow-download { padding-right:14px; background: url('_img/content/arrow-download-off.png') 100% 50% no-repeat; }
 a.arrow-download:hover { background: url('_img/content/arrow-download-on.png') 100% 50% no-repeat; }
 
 .left-container-content ul { list-style:none; float:left;  width:500px; margin-bottom:10px; }

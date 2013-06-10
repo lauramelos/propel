@@ -21,10 +21,12 @@ define( 'WPCACHEHOME', '/home/propel/public_html/locator/wp-content/plugins/wp-s
 define('DB_NAME', 'propel_search');
 
 /** Tu nombre de usuario de MySQL */
-define('DB_USER', 'propel_user');
+//define('DB_USER', 'propel_user');
+define('DB_USER', 'root');
 
 /** Tu contraseña de MySQL */
-define('DB_PASSWORD', '123456');
+//define('DB_PASSWORD', '123456');
+define('DB_PASSWORD', 'alfilasesino');
 
 /** Host de MySQL (es muy probable que no necesites cambiarlo) */
 define('DB_HOST', 'localhost');
