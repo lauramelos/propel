@@ -165,7 +165,8 @@ function nuevo_manda_email( $post_id ) {
         <td width="280" align="right" valign="top">';
           if ($lat<>0)  
             $result .='<a href="http://maps.google.com?ll='.$lat.','.$lng.'&z=16"  target=_blank style="text-decoration:none; border:none;">
-              <img src="http://maps.google.com/maps/api/staticmap?center='.$latlng.'&zoom=16&size=260x83&sensor=false&markers=icon:'.$url.'_img/content/map-marker2.png|'.$latlng.'" /></a>';
+            <img src="http://maps.google.com/maps/api/staticmap?center='.$latlng.'&zoom=16&size=260x83&sensor=false&markers=icon:'.$url.'_img/content/map-marker2.png|'.$latlng.'" /></a>
+            <br /> Geo-Loc:'&latlng;
           else
             $result .='<a href="http://maps.google.com?q='.$direc.'&z=16&markers=icon:'.$url.'_img/content/map-marker2.png|'.$direc.'" target=_blank  style="text-decoration:none; border:none;" ><img src="http://maps.google.com/maps/api/staticmap?center='.$direc.'&zoom=16&size=260x83&sensor=false&markers=icon:'.$url.'_img/content/map-marker2.png|'.$direc.'" /></a>';
           
@@ -184,9 +185,10 @@ function nuevo_manda_email( $post_id ) {
             $result31 = $result3.$distan_S[$a].'&nbsp;miles" of your area ("'.$zip_S[$a].'").<br /></p>
               <p  style="color:#a8a8a8; font-size:11px; font-family:Helvetica, Arial;padding:0 30px;">Please <a href="'.$url.'locator/find-propel-physician/?unsuscribe='.$emails_T[$a].'" style="color:#fcac00;text-decoration:none" > click here</a> if you\'d like to stop receiving these notifications.</p>
               </td></tr></table>';
-            $result2  = '<p style="color:#9c9c9c; font-size:12px; font-family:Helvetica, Arial ; text-align:right;line-height:18px;">Distance: '.$distan_T[$a].'miles <br /><span style="color:#fcac00;"><a href="http://maps.google.com?q='.$direc.'&hl=en&t=h&mra=ls&z=16&layer=t class="enlace" target="_blank" style="color:#fcac00;text-decoration:none">Directions</a></span></p>
-        </td>';
-            $subject  = $names_T[$a].", we found a PROPEL PHYSICIAN near you!";
+            $result2  = '<p style="color:#9c9c9c; font-size:12px; font-family:Helvetica, Arial ; text-align:right;line-height:18px;">Distance: '.$distan_T[$a].'miles <br /><span style="color:#fcac00;"><a href="http://maps.google.com?q='.$direc.'&hl=en&t=h&mra=ls&z=16&layer=t class="enlace" target="_blank" style="color:#fcac00;text-decoration:none">Directions</a></span></p></td>';
+ 
+            //$subject  = $names_T[$a].", we found a PROPEL PHYSICIAN near you!";
+            $subject = "New PROPEL Physician in your area";
             //die($result.$result2.$result31 );
             add_filter('wp_mail_content_type',create_function('', 'return "text/html"; '));
             if (wp_mail( $emails_T[$a], $subject, $result.$result2.$result31 )) {
