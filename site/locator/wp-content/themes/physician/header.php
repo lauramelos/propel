@@ -189,7 +189,7 @@
 
 					<li id="company">
 
-						<a href="http://67.222.18.91/~propel/co-about_us.html" class="item active">Company</a>
+						<a href="http://67.222.18.91/~propel/co-about_us.html" class="item">Company</a>
 
 						<div class="subnav">
 

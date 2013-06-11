@@ -95,9 +95,12 @@ function nuevo_manda_email( $post_id ) {
       if (count($emails_T)>0) {
         for ($i=1;$i<6;$i++) { 
           if ($nuevo['first_name_'.$i][0] <> '') $docs .="<span 
-            style='margin:0 !Important;  padding:0 !Important;line-height:18px'>".
-            $nuevo['designation_'.$i][0]." ".$nuevo['first_name_'.$i][0]." ".
-            $nuevo['last_name_'.$i][0]."<br /></span>";
+          style='margin:0 !Important;  padding:0 !Important;
+          line-height:18px'>"
+          .$nuevo['first_name_'.$i][0]." "
+          .$nuevo['last_name_'.$i][0]." "
+          .$nuevo['designation_'.$i][0]." "
+          ."<br /></span>";
         }
       } 
       $banc=0;
@@ -136,16 +139,16 @@ function nuevo_manda_email( $post_id ) {
           a:hover {color:#feb61c; !Important; text-decoration:none}
         </style>
         <table width="576" align="center" ><tr>
-          <td><img src="'.$url.'locator/wp-content/themes/physician/_img/mailtop2.jpg" width="576"/></td>
+          <td><a href="'.$url.'/../" alt="Propel site"><img src="'.$url.'/wp-content/themes/physician/_img/mailtop2.jpg" width="576"/></a></td>
         </tr></table>
         <table width="516" align="center"><tr>
           <td colspan="2">
-            <img src="'.$url.'locator/wp-content/themes/physician/_img/mailapropel.jpg"/>
-            <p style="color:#9c9c9c; font-size:12px; font-family:Arial, Helvetica, sans-serif;line-height:22px">A new PROPEL physician has been add in your area. Please <a href="'.$url.'" style="color:#feb61c; text-decoration:none;">visit our website</a> or contact a physician near you to find out more about PROPEL.</p>
+            <img src="'.$url.'/wp-content/themes/physician/_img/mailapropel.jpg"/>
+            <p style="color:#9c9c9c; font-size:12px; font-family:Arial, Helvetica, sans-serif;line-height:22px">A new PROPEL physician has been add in your area. Please <a href="'.$url.'/../" style="color:#feb61c; text-decoration:none;">visit our website</a> or contact a physician near you to find out more about PROPEL.</p>
           </td>
         </tr>
         <tr>
-          <td colspan="2" style="text-align:center"><img src="'.$url.'locator/wp-content/themes/physician/_img/mailine.jpg"/></td>
+          <td colspan="2" style="text-align:center"><img src="'.$url.'/wp-content/themes/physician/_img/mailine.jpg"/></td>
         </tr>
         <tr>
           <td width="222">
@@ -154,9 +157,9 @@ function nuevo_manda_email( $post_id ) {
             <div style="color:#9c9c9c; font-size:12px; font-family:Helvetica, Arial;line-height:18px">';
             
           if ($nuevo['phone_number'][0]<>'')
-          $result .='Tel: <a href="tel:'.$nuevo['phone_number'][0].'" value="+'.$nuevo['phone_number'][0].'" target="_blank" style="color:#fcac00;text-decoration:none">'.$nuevo['phone_number'][0].'</a>';
+          $result .='Tel: <a style="color:#9c9c9c; text-decoration: none;" href="tel:'.$nuevo['phone_number'][0].'" value="+'.$nuevo['phone_number'][0].'" target="_blank" style="color:#fcac00;text-decoration:none">'.$nuevo['phone_number'][0].'</a>';
           if ($nuevo['email_address'][0]<>'')
-          $result .='<br/> Email: &nbsp;<span style="color:#feb61c !Important;text-decoration:none;" ><a href="mailto:"'.$nuevo['email_address'][0].'" class="enlace" style="color:#fcac00;text-decoration:none">'.$nuevo['email_address'][0].'</a></span>';
+          $result .='<br/> Email: &nbsp;<span style="color:#feb61c !Important;text-decoration:none;" ><a href="mailto:'.$nuevo['email_address'][0].'" class="enlace" style="color:#fcac00;text-decoration:none">'.$nuevo['email_address'][0].'</a></span>';
           if ($nuevo['website'][0]<>'')
           $result .='<br/> Website:&nbsp;<span style="color:#feb61c !Important;text-decoration:none;" ><a href="'.$nuevo['website'][0].'" class="enlace"  style="color:#fcac00;text-decoration:none">'.$nuevo['website'][0].'</a></span>';
           
@@ -165,25 +168,25 @@ function nuevo_manda_email( $post_id ) {
         <td width="280" align="right" valign="top">';
           if ($lat<>0)  
             $result .='<a href="http://maps.google.com?ll='.$lat.','.$lng.'&z=16"  target=_blank style="text-decoration:none; border:none;">
-            <img src="http://maps.google.com/maps/api/staticmap?center='.$latlng.'&zoom=16&size=260x83&sensor=false&markers=icon:'.$url.'_img/content/map-marker2.png|'.$latlng.'" /></a>
+            <img src="http://maps.google.com/maps/api/staticmap?center='.$latlng.'&zoom=16&size=260x83&sensor=false&markers=icon:'.$url.'/_img/content/map-marker2.png|'.$latlng.'" /></a>
             <br /> Geo-Loc:'&latlng;
           else
-            $result .='<a href="http://maps.google.com?q='.$direc.'&z=16&markers=icon:'.$url.'_img/content/map-marker2.png|'.$direc.'" target=_blank  style="text-decoration:none; border:none;" ><img src="http://maps.google.com/maps/api/staticmap?center='.$direc.'&zoom=16&size=260x83&sensor=false&markers=icon:'.$url.'_img/content/map-marker2.png|'.$direc.'" /></a>';
+            $result .='<a href="http://maps.google.com?q='.$direc.'&z=16&markers=icon:'.$url.'/_img/content/map-marker2.png|'.$direc.'" target=_blank  style="text-decoration:none; border:none;" ><img src="http://maps.google.com/maps/api/staticmap?center='.$direc.'&zoom=16&size=260x83&sensor=false&markers=icon:'.$url.'/_img/content/map-marker2.png|'.$direc.'" /></a>';
           
           $result3='</td></tr>
       </table><p></p>
       <table width="576" align="center" bgcolor="#dcdcdc" cellpadding="6">
         <tr>
-          <td width="100" style="padding:0 30px;"><a href="'.$url.'locator/find-propel-physician/" style="color:#b4b4b1; font-size:12px; font-family:Arial, Helvetica, sans-serif; font-weight:400; text-decoration:none;"><img src="'.$url.'_img/mailfind.png" height="16" /> Find PROPEL</a></td>
-          <td width="100"><a href="'.$url.'co-contact_us.html" style="color:#b4b4b1; font-size:12px; font-family:Helvetica, Arial; font-weight:400; text-decoration:none;"> <img src="'.$url.'_img/mailcontact.png" /> Contact Us</a></td>
-          <td style="text-align:right; padding-right:30px"><img src="'.$url.'_img/global/intersect_logo.png" /></td>
+          <td width="100" style="padding:0 30px;"><a href="'.$url.'/find-propel-physician/" style="color:#b4b4b1; font-size:12px; font-family:Arial, Helvetica, sans-serif; font-weight:400; text-decoration:none;"><img src="'.$url.'/wp-content/themes/physician/_img/mailfind.png" height="16" /> Find PROPEL</a></td>
+          <td width="100"><a href="'.$url.'/../co-contact_us.html" style="color:#b4b4b1; font-size:12px; font-family:Helvetica, Arial; font-weight:400; text-decoration:none;"> <img src="'.$url.'/wp-content/themes/physician/_img/mailcontact.png" /> Contact Us</a></td>
+          <td style="text-align:right; padding-right:30px"><img src="'.$url.'/wp-content/themes/physician/_img/global/intersect_logo.png" /></td>
         </tr>
         <tr>
           <td colspan="3">
             <p style="color:#a8a8a8; font-size:11px; font-family:Helvetica, Arial;padding:0 30px;">You are receiving this email because you or someone using this email address signd up to receive a notification when a PROPEL physician is available within "';
           for ($a=0; $a<count($emails_T);$a++){
             $result31 = $result3.$distan_S[$a].'&nbsp;miles" of your area ("'.$zip_S[$a].'").<br /></p>
-              <p  style="color:#a8a8a8; font-size:11px; font-family:Helvetica, Arial;padding:0 30px;">Please <a href="'.$url.'locator/find-propel-physician/?unsuscribe='.$emails_T[$a].'" style="color:#fcac00;text-decoration:none" > click here</a> if you\'d like to stop receiving these notifications.</p>
+              <p  style="color:#a8a8a8; font-size:11px; font-family:Helvetica, Arial;padding:0 30px;">Please <a href="'.$url.'/find-propel-physician/?unsuscribe='.$emails_T[$a].'" style="color:#fcac00;text-decoration:none" > click here</a> if you\'d like to stop receiving these notifications.</p>
               </td></tr></table>';
             $result2  = '<p style="color:#9c9c9c; font-size:12px; font-family:Helvetica, Arial ; text-align:right;line-height:18px;">Distance: '.$distan_T[$a].'miles <br /><span style="color:#fcac00;"><a href="http://maps.google.com?q='.$direc.'&hl=en&t=h&mra=ls&z=16&layer=t class="enlace" target="_blank" style="color:#fcac00;text-decoration:none">Directions</a></span></p></td>';
  
