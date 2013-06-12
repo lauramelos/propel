@@ -11,7 +11,7 @@
 
 	// CSS importer
 
-	add_action('init', 'csv_importer_taxonomies', 0);
+/*	add_action('init', 'csv_importer_taxonomies', 0);
 
 	function csv_importer_taxonomies() {
     	register_taxonomy('art', 'post', array(
@@ -23,7 +23,7 @@
         'hierarchical' => false,
         'label' => 'Country',
     	));
-	}
+  }*/
 
 	// Add RSS links to <head> section
 	automatic_feed_links();

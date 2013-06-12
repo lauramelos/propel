@@ -21,7 +21,7 @@ function wp_addreport_options() {
  ?>
  <link rel='stylesheet' id='colors-css'  href='http://67.222.18.91/~propel/locator/wp-admin/css/colors-fresh.min.css?ver=3.5.1' type='text/css' media='all' />
  <p>&nbsp;</p>
- <H1>USERS FROM NO RESULTS FORM</H1>
+ <H1>Email Notification Subscribers</H1>
  <form action="" method="post">
  <table><tr><td>Status Email:</td>
  <td><select name="filtra">
@@ -51,7 +51,7 @@ $res_emails = $wpdb->get_results( $query_link );
 <th id="cb" class="manage-column column-cb check-column" >Email</th>
 <th id="cb" class="manage-column column-cb check-column" >Zip</th>
 <th id="cb" class="manage-column column-cb check-column" >Distance</th>
-<th id="cb" class="manage-column column-cb check-column" >Staus</th>
+<th id="cb" class="manage-column column-cb check-column" >Status</th>
 <th id="cb" class="manage-column column-cb check-column" >Mails Sent</th>
 </tr>
 <?
@@ -72,7 +72,7 @@ foreach ($res_emails as $sigema){
 }
 
 function wp_addreport() {
-  add_menu_page('Users From No Results Form', 'Users From No Results Form', 'manage_options', 'wp_addreport', 'wp_addreport_options','http://67.222.18.91/~propel/_img/content/doctor.png' );
+  add_menu_page('Email Notification Subscribers', 'Email Notification Subscribers', 'manage_options', 'wp_addreport', 'wp_addreport_options','http://67.222.18.91/~propel/_img/content/doctor.png' );
   //add_options_page( 'Report Signed Emails', 'Report Signed Emails', 'manage_options', 'wp_addreport', 'wp_addreport_options' );
 }
 add_action( 'admin_menu', 'wp_addreport' );
