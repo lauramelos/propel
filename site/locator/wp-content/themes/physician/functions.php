@@ -1,7 +1,10 @@
 <?php
 
+
+  // removing admin menus en cms
   function my_remove_menu_pages() {
         remove_menu_page('themes.php');
+        remove_menu_page('index.php');
         remove_menu_page('tools.php');
         remove_menu_page('edit-comments.php');
         remove_menu_page('plugins.php');
@@ -9,10 +12,42 @@
         remove_menu_page('users.php');
         remove_menu_page('options-general.php');
         remove_menu_page('upload.php');
-        remove_submenu_page( 'index.php', 'update-core.php' );
+        remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=category');
+        remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=post_tag');
 }
   add_action( 'admin_menu', 'my_remove_menu_pages' );
+  // end removing
 
+    //renaming posts
+    function change_post_menu_label() {
+        global $menu;
+        global $submenu;
+        $menu[5][0] = 'Physicians';
+        $submenu['edit.php'][5][0] = 'Physicians';
+       echo '';
+    }
+    //end renaming posts
+
+    //changing labels
+    function change_post_object_label() {
+        global $wp_post_types;
+        $labels = &$wp_post_types['post']->labels;
+        $labels->name = 'Physicians';
+        $labels->singular_name = 'Physician';
+        $labels->add_new = 'Add Physician';
+        $labels->add_new_item = 'Add Physician';
+        $labels->edit_item = 'Edit Physician';
+        $labels->new_item = 'Physician';
+        $labels->view_item = 'View Physician';
+        $labels->search_items = 'Search Physicians';
+        $labels->not_found = 'No Physician found';
+        $labels->not_found_in_trash = 'No Physician found in Trash';
+    }
+    add_action( 'init', 'change_post_object_label' );
+    add_action( 'admin_menu', 'change_post_menu_label' );
+    // end changing labels posts
+
+    add_filter('screen_options_show_screen', '__return_false');
 
 	// CSS importer
 
