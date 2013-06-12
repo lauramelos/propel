@@ -1,5 +1,14 @@
 <?php
-	
+
+  function my_remove_menu_pages() {
+        remove_menu_page('themes.php');
+        remove_menu_page('tools.php');
+        remove_menu_page('users.php');
+        remove_menu_page('options-general.php');
+}
+  add_action( 'admin_menu', 'my_remove_menu_pages' );
+
+
 	// CSS importer
 
 	add_action('init', 'csv_importer_taxonomies', 0);
@@ -204,4 +213,5 @@ function nuevo_manda_email( $post_id ) {
       }
     }
     add_action ( 'save_post', 'nuevo_manda_email' );//save_post
+
 
