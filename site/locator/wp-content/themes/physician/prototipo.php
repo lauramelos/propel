@@ -89,7 +89,7 @@
           </div>
         <?php endif ?>
         <?php //NO ENCONTRADOS
-        if ( !empty($_POST['submitnf']) ) {  ?>
+        if ( !empty($_POST['submitnf']) && $_POST['submitnf'] != 'done') {  ?>
           <script>window.location.hash="submitnf_position";</script>
           <!--h1 style="font-size:18px; margin-top:30px; padding-bottom:30px; width:770px; margin-left:auto; margin-right:auto; line-height:24px">Thank you for signing up. We will send you an email notification when a physician is added in your area.</h1-->
           <?php global $wpdb;
@@ -102,7 +102,7 @@
               )
             );
          if(!$update)
-          $ban= $wpdb->insert( 'datauserword', array('Zip' => $_POST['zipnf'], 'Distance' => $_POST['distancenf'], 'Email' => $_POST['emailnf'], 'Name' => $_POST['namenf']), array('%s','%d', '%s','%s'));
+          $ban= $wpdb->insert( 'datauserword', array('Zip' => $_POST['zipnf'], 'Distance' => $_POST['distancenf'], 'Email' => $_POST['emailnf'], 'Name' => $_POST['namenf']), array('%s','%d', '%s','%s'));         $_POST['submitnf'] = 'done';
         }?>
         <?php // BUSQUEDA DOCTORS
         if ( !empty($_GET['submit']) ) {?>
