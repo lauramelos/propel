@@ -77,11 +77,13 @@
           <script>window.location.hash="submitnf_position";</script>
           <?php global $wpdb;
           $update = $wpdb->update("datauserword", 
-              array('enviado' => 0,
-                   'Distance' => $_POST['distancenf'],
+            array(
+               'Name' => $_POST['namenf'],
+               'enviado' => 0,
+               'Distance' => $_POST['distancenf'],
               ),
               array('Email' => $_POST['emailnf'],
-                      'Zip' => $_POST['zipnf']
+                    'Zip' => $_POST['zipnf']
               )
             );
           if(!$update) {
