@@ -118,6 +118,7 @@ function nuevo_manda_email( $post_id ) {
       
       global $wpdb;
       $coordes  = $wpdb->get_results("select Lon, Lat from zipcodes where Zipcode='{$nzip}'");
+
       foreach($coordes as $coords)
       $zipcodes = $wpdb->get_results("SELECT Zipcode, ( 3959 * acos( cos( radians( ".$coords->Lat." ) ) * cos( radians( Lat ) ) * cos( radians( Lon ) - radians( ".$coords->Lon." ) ) + sin( radians( ".$coords->Lat." ) ) * sin( radians( Lat ) ) ) ) AS distance FROM zipcodes HAVING distance <= 500 ORDER BY Zipcode, distance");
       
