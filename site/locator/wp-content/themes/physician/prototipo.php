@@ -40,7 +40,8 @@
               var config = {
                 '.chzn-select'           : {},
                 '.chzn-select-deselect'  : {allow_single_deselect:true},
-                '.chzn-select-no-single' : {disable_search_threshold:10},
+                '	width:180px;
+.chzn-select-no-single' : {disable_search_threshold:10},
                 '.chzn-select-no-results': {no_results_text:'Oops, nothing found!'},
                 '.chzn-select-width'     : {width:"95%"}
               }
@@ -61,19 +62,19 @@
               array('Email' => $_GET['unsuscribe'])
             );
           ?>
-          <div <?php post_class() ?> id="post-<?php the_ID(); ?>">
+          <div class="<?php post_class(); ?> id="post-<?php the_ID(); ?>">
             <div class="ctotal">
               <p class="hay">
-              <?php if($yaenvio){ echo "You have been unsubscribed from our physician notification list."; }
+              <?php if($yaenvio) { echo "You have been unsubscribed from our physician notification list."; }
                     else { echo "Your mail was not in our physician notification list."; }
               ?>
               </p>
             </div>  
           </div>
-        <?php endif ?>
+        <?php endif; ?>
 
         <?php //SUBSCRIBE
-        if ( !empty($_POST['submitnf'])) {  ?>
+        if ( !empty ($_POST['submitnf'])) {  ?>
           <script>window.location.hash="submitnf_position";</script>
           <?php global $wpdb;
           $update = $wpdb->update("datauserword", 
@@ -88,9 +89,9 @@
             );
           if(!$update) {
             $user_count = $wpdb->get_var( "SELECT COUNT(*) FROM 'datauserword' WHERE Email ='".$_POST['emailnf']."' AND Zip = '".$_POST['zipnf'])."'";
-            if(!$user_count) $ban= $wpdb->insert( 'datauserword', array('Zip' => $_POST['zipnf'], 'Distance' => $_POST['distancenf'], 'Email' => $_POST['emailnf'], 'Name' => $_POST['namenf']), array('%s','%d', '%s','%s'));
+            // if(!$user_count) $ban = $wpdb->insert( 'datauserword', array('Zip' => $_POST['zipnf'], 'Distance' => $_POST['distancenf'], 'Email' => $_POST['emailnf'], 'Name' => $_POST['namenf']), array('%s','%d', '%s','%s'));
+            $ban = $wpdb->insert( 'datauserword', array('Zip' => $_POST['zipnf'], 'Distance' => $_POST['distancenf'], 'Email' => $_POST['emailnf'], 'Name' => $_POST['namenf']), array('%s','%d', '%s','%s'));
           }
-
 
         }?>
 
