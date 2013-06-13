@@ -89,8 +89,7 @@
             );
           if(!$update) {
             $user_count = $wpdb->get_var( "SELECT COUNT(*) FROM 'datauserword' WHERE Email ='".$_POST['emailnf']."' AND Zip = '".$_POST['zipnf'])."'";
-            // if(!$user_count) $ban = $wpdb->insert( 'datauserword', array('Zip' => $_POST['zipnf'], 'Distance' => $_POST['distancenf'], 'Email' => $_POST['emailnf'], 'Name' => $_POST['namenf']), array('%s','%d', '%s','%s'));
-            $ban = $wpdb->insert( 'datauserword', array('Zip' => $_POST['zipnf'], 'Distance' => $_POST['distancenf'], 'Email' => $_POST['emailnf'], 'Name' => $_POST['namenf']), array('%s','%d', '%s','%s'));
+            if(!$user_count) $ban = $wpdb->insert( 'datauserword', array('Zip' => $_POST['zipnf'], 'Distance' => $_POST['distancenf'], 'Email' => $_POST['emailnf'], 'Name' => $_POST['namenf']), array('%s','%d', '%s','%s'));
           }
 
         }?>
