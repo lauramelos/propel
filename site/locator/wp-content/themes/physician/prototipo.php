@@ -40,7 +40,8 @@
               var config = {
                 '.chzn-select'           : {},
                 '.chzn-select-deselect'  : {allow_single_deselect:true},
-                '.chzn-select-no-single' : {disable_search_threshold:10},
+                '	width:180px;
+.chzn-select-no-single' : {disable_search_threshold:10},
                 '.chzn-select-no-results': {no_results_text:'Oops, nothing found!'},
                 '.chzn-select-width'     : {width:"95%"}
               }
@@ -61,10 +62,10 @@
               array('Email' => $_GET['unsuscribe'])
             );
           ?>
-          <div <?php post_class() ?> id="post-<?php the_ID(); ?>">
+          <div class="<?php post_class(); ?> id="post-<?php the_ID(); ?>">
             <div class="ctotal">
               <p class="hay">
-              <?php if($yaenvio){ echo "You have been unsubscribed from our physician notification list."; }
+              <?php if($yaenvio) { echo "You have been unsubscribed from our physician notification list."; }
                     else { echo "Your mail was not in our physician notification list."; }
               ?>
               </p>
@@ -77,11 +78,13 @@
           <script>window.location.hash="submitnf_position";</script>
           <?php global $wpdb;
           $update = $wpdb->update("datauserword", 
-              array('enviado' => 0,
-                   'Distance' => $_POST['distancenf'],
+            array(
+               'Name' => $_POST['namenf'],
+               'enviado' => 0,
+               'Distance' => $_POST['distancenf'],
               ),
               array('Email' => $_POST['emailnf'],
-                      'Zip' => $_POST['zipnf']
+                    'Zip' => $_POST['zipnf']
               )
             );
           if(!$update) {
@@ -320,20 +323,17 @@
 </div>
 
 <?php endif; ?>
+<<<<<<< HEAD
 <?php } ?>
+=======
+>>>>>>> a8b19ac7b8de1dc6499ec8af48993ad6fc4305bd
         </div>
-
         <!-- Column Content END -->
-
       </div>
-
     <!-- inner-content END -->
     </div>
-
     <div id="content-bottom"></div>
-
     <!-- content END -->
-
 <div style="display:none;">
 <div id="physician_locator" class="inline-content" style="width:400px;padding:0px;">
   <div style="background-color:#faac23;height:70px;width:400px;color:#fff; padding-top:34px;">
@@ -379,9 +379,7 @@
     </form>
   </div>
   </div>
-  
 </div>
-
 </div>
 
 <script>
@@ -390,7 +388,6 @@ function agree_submit(){
   $('#submitnf').removeClass('signup_not'); 
   $('#submitnf').addClass('signup'); 
   $('#submitnf').removeAttr('disabled');
-
   }else{ 
   $('#submitnf').removeClass('signup'); 
   $('#submitnf').addClass('signup_not'); 
@@ -400,135 +397,81 @@ function agree_submit(){
 
 </script>
 <?php
-
 /**
-
  * Initiate the script.
- *
  * Calls the validation options on the comment form.
- *
  */
-
 function pbd_vc_init() { ?>
-
   <script type="text/javascript">
-  function isValidUSZip(sZip) {return /^\d{5}(-\d{4})?$/.test(sZip);}
-  
-  $('.chzn-results li').click(function() { 
-    document.getElementById('distance_chzn').children[0].style.backgroundColor = '#eeeeee';
-  document.getElementById('distance_chzn').children[0].style.color = '#949590';
-  document.getElementById('distance_background').style.backgroundColor = '#eeeeee';
-  });
-  
-  $('#locator_form').submit(function() {
-    var result = true;
-    
-    document.getElementById('distance_chzn').children[0].style.backgroundColor = '#eeeeee';
-    document.getElementById('distance_chzn').children[0].style.color = '#949590';
-    document.getElementById('distance_background').style.backgroundColor = '#eeeeee';
-    
-    /*document.getElementById('zipcode').style.backgroundColor = '#eeeeee';
-    document.getElementById('zipcode').style.color = '#9b9b99';*/
-    
-    if(document.getElementById('distance').value == '')
-    {
-      document.getElementById('distance_chzn').children[0].style.backgroundColor = 'red';
-      document.getElementById('distance_chzn').children[0].style.color = 'white';
-      document.getElementById('distance_background').style.backgroundColor = 'red';
-      result = false;
-    }
-    
-    /*if(!isValidUSZip(document.getElementById('zipcode').value))
-    {
-      document.getElementById('zipcode').style.backgroundColor = 'red';
-      document.getElementById('zipcode').style.color = 'white';
-      result = false;
-    }*/
-    return result;});
-
-    jQuery(document).ready(function($) {
-    
-    
-    $('#locator_form').validate({
-      rules: {
-        zipcode: {
-        
-        minlength: 5,
-        required:  true,				
-        number: true			
-
-        },
-
-        distance: {
-
-          required:true			
-             
-
-        } 
-
-      },
-
-
-      messages: {
-
-      zipcode: "Please enter a valid Zipcode.",
-
-      distance: "Please select a Distance."
-
+    function isValidUSZip(sZip) { return /^\d{5}(-\d{4})?$/.test(sZip); }
+    $('.chzn-results li').click(function() { 
+      document.getElementById('distance_chzn').children[0].style.backgroundColor = '#eeeeee';
+      document.getElementById('distance_chzn').children[0].style.color = '#949590';
+      document.getElementById('distance_background').style.backgroundColor = '#eeeeee';
+    });
+ 
+    $('#locator_form').submit(function() {
+      var result = true;
+      document.getElementById('distance_chzn').children[0].style.backgroundColor = '#eeeeee';
+      document.getElementById('distance_chzn').children[0].style.color = '#949590';
+      document.getElementById('distance_background').style.backgroundColor = '#eeeeee';
+      if(document.getElementById('distance').value == '') {
+        document.getElementById('distance_chzn').children[0].style.backgroundColor = 'red';
+        document.getElementById('distance_chzn').children[0].style.color = 'white';
+        document.getElementById('distance_background').style.backgroundColor = 'red';
+        result = false;
       }
-
-      });
-
-
-      $('#nf').validate({
-      rules: {
-        namenf: {
-        required: true
-        },
-        
-        emailnf: {
-        required: true,
-        email: true
-        },
-
-        zipnf: {
-        required: true,
-        minlength: 5
-        }, 
-
-        distancenf: {
-        required: true
-        },
-
-        chagree: {
-        required: true
-        }	
-
-      },
-
-      messages: {
-
-      namenf: "Please enter your name.",
-
-      emailnf: "Please enter a correct e-mail.",
-
-      zipnf: "Please enter a valid Zipcode.",
-
-      distancenf: "Please select a Distance.",
-
-      chagree: "You have to agree to the Terms and Conditions of Use."
-
-      }
-
-      });
-
+      return result;
     });
 
+    jQuery(document).ready(function($) {
+      $('#locator_form').validate({
+        rules: {
+          zipcode: {
+            minlength: 5,
+            required: true,
+            number: true
+          },
+          distance: {
+            required:true
+          } 
+        },
+        messages: {
+          zipcode: "Please enter a valid Zipcode.",
+          distance: "Please select a Distance."
+        }
+      });
+      $('#nf').validate({
+        rules: {
+          namenf: {
+            required: true
+          },
+          emailnf: {
+            required: true,
+            email: true
+          },
+          zipnf: {
+            required: true,
+            minlength: 5
+          }, 
+          distancenf: {
+            required: true
+          },
+          chagree: {
+            required: true
+          }
+        },
+        messages: {
+          namenf: "Please enter your name.",
+          emailnf: "Please enter a correct e-mail.",
+          zipnf: "Please enter a valid Zipcode.",
+          distancenf: "Please select a Distance.",
+          chagree: "You have to agree to the Terms and Conditions of Use."
+        }
+      });
+    });
   </script>
-  
-
 <?php }
 add_action('wp_footer', 'pbd_vc_init', 999);
 ?>
-
 <?php get_footer(); ?>

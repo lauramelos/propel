@@ -119,6 +119,7 @@ function nuevo_manda_email( $post_id ) {
       
       global $wpdb;
       $coordes  = $wpdb->get_results("select Lon, Lat from zipcodes where Zipcode='{$nzip}'");
+
       foreach($coordes as $coords)
       $zipcodes = $wpdb->get_results("SELECT Zipcode, ( 3959 * acos( cos( radians( ".$coords->Lat." ) ) * cos( radians( Lat ) ) * cos( radians( Lon ) - radians( ".$coords->Lon." ) ) + sin( radians( ".$coords->Lat." ) ) * sin( radians( Lat ) ) ) ) AS distance FROM zipcodes HAVING distance <= 500 ORDER BY Zipcode, distance");
       
@@ -219,7 +220,7 @@ function nuevo_manda_email( $post_id ) {
           if ($lat<>0)  
             $result .='<a href="http://maps.google.com?ll='.$lat.','.$lng.'&z=16"  target=_blank style="text-decoration:none; border:none;">
             <img src="http://maps.google.com/maps/api/staticmap?center='.$latlng.'&zoom=16&size=260x83&sensor=false&markers=icon:'.$url.'/_img/content/map-marker2.png|'.$latlng.'" /></a>
-            <br /> Geo-Loc:'&latlng;
+            <br /> Geo-Loc:'.$latlng;
           else
             $result .='<a href="http://maps.google.com?q='.$direc.'&z=16&markers=icon:'.$url.'/_img/content/map-marker2.png|'.$direc.'" target=_blank  style="text-decoration:none; border:none;" ><img src="http://maps.google.com/maps/api/staticmap?center='.$direc.'&zoom=16&size=260x83&sensor=false&markers=icon:'.$url.'/_img/content/map-marker2.png|'.$direc.'" /></a>';
           
