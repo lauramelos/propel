@@ -4,6 +4,7 @@
   // removing admin menus en cms
   function my_remove_menu_pages() {
         remove_menu_page('themes.php');
+        remove_menu_page('edit.php?post_type=acf');
         remove_menu_page('index.php');
         remove_menu_page('tools.php');
         remove_menu_page('edit-comments.php');
