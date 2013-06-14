@@ -86,7 +86,7 @@
    global $wpdb;
 	
     $str = '<table><tr>
-             <th>Name</th><th>Email</th><th>Zip</th><th>Distance</th><th>Satus</th>
+             <th>Name</th><th>Email</th><th>Zip</th><th>Distance</th><th>Status</th><th>Mails sent</th>
             </tr>';
    
    
@@ -102,9 +102,10 @@ $res_emails = $wpdb->get_results( $query_link );
       $str.= '<td>'.$row->Zip."</td>";
       $str.= '<td>'.$row->Distance."</td>";
       $str.= '<td>'; 
-	  if ($row->enviado == 0) $str.= '<span style="color:#990000">Needs Physician Results</span>'; 
-	  else $str.= '<span style="color:#006633">Mail Sent</span>';
-	  $str .= '</td></tr>';
+      if ($row->enviado == 0) $str.= '<span style="color:#990000">Subscribed</span>'; 
+      else $str.= '<span style="color:#006633">Unsubscribed</span>';
+      $str.= '<td>'.$row->count."</td>";
+      $str .= '</td></tr>';
     }
   }
 

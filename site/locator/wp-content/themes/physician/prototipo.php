@@ -88,7 +88,7 @@
               )
             );
           if(!$update) {
-            $user_count = $wpdb->get_var( "SELECT COUNT(*) FROM 'datauserword' WHERE Email ='".$_POST['emailnf']."' AND Zip = '".$_POST['zipnf'])."'";
+            $user_count = $wpdb->get_var( "SELECT COUNT(*) FROM datauserword WHERE Email ='".$_POST['emailnf']."' AND Zip = ".$_POST['zipnf']);
             if(!$user_count) $ban= $wpdb->insert( 'datauserword', array('Zip' => $_POST['zipnf'], 'Distance' => $_POST['distancenf'], 'Email' => $_POST['emailnf'], 'Name' => $_POST['namenf']), array('%s','%d', '%s','%s'));
           }
         }?>
@@ -182,7 +182,7 @@
                                <div class="names">
                                  <?php for ($i=1;$i<6;$i++) { 
                                  if (get_field('first_name_'.$i) <> '') { ?>
-                                   <span><!--Physician:--><strong><?php the_field('first_name_'.$i); ?> <?php the_field('last_name_'.$i); ?> <?php the_field('designation_'.$i); ?></strong></span>
+                                   <span><!--Physician:--><strong><?php the_field('first_name_'.$i); ?> <?php the_field('last_name_'.$i); ?>, <?php the_field('designation_'.$i); ?></strong></span>
                                  <?php }
                                  } ?>
                                </div>
@@ -234,13 +234,9 @@
               
             $query= null;
             } 
-
- }
-             } else { ?>
-              <p><br />There aren't zipcodes on that range.</p>
-      <?php
+          }
+        }
       }
-  }
   else
   { ?>
     <input id="ZipValido" type="hidden" name="opcion" value="NO" />
@@ -323,10 +319,6 @@
 </div>
 
 <?php endif; ?>
-<<<<<<< HEAD
-<?php } ?>
-=======
->>>>>>> a8b19ac7b8de1dc6499ec8af48993ad6fc4305bd
         </div>
         <!-- Column Content END -->
       </div>

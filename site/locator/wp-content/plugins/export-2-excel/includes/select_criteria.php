@@ -40,7 +40,7 @@ if ( isset($_POST['Submit']) ) {
 			break;
 			
 			case 'signed_emails':
-			$filename = 'users-from-no-results-form'.date('Ymd').'.'.$ext;
+			$filename = 'Email_Notification_Subscribers'.date('Ymd').'.'.$ext;
 			break;
 			
 			case 'searches':
@@ -106,7 +106,7 @@ if ( isset($_POST['Submit']) ) {
                       <input type="radio" class="post_type" name="e2e_post_type" value="signed_emails" onclick="dates.style.display='none';" />
                      </i>
                      <small>
-                       Users from no Results Form
+                       Email Notification Subscribers
                      </small>
 					 
 					 

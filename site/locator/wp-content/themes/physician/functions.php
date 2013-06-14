@@ -149,7 +149,7 @@ function nuevo_manda_email( $post_id ) {
           style='margin:0 !Important;  padding:0 !Important;
           line-height:18px'>"
           .$nuevo['first_name_'.$i][0]." "
-          .$nuevo['last_name_'.$i][0]." "
+          .$nuevo['last_name_'.$i][0].", "
           .$nuevo['designation_'.$i][0]." "
           ."<br /></span>";
         }
@@ -212,7 +212,7 @@ function nuevo_manda_email( $post_id ) {
           if ($nuevo['email_address'][0]<>'')
           $result .='<br/> Email: &nbsp;<span style="color:#feb61c !Important;text-decoration:none;" ><a href="mailto:'.$nuevo['email_address'][0].'" class="enlace" style="color:#fcac00;text-decoration:none">'.$nuevo['email_address'][0].'</a></span>';
           if ($nuevo['website'][0]<>'')
-          $result .='<br/> Website:&nbsp;<span style="color:#feb61c !Important;text-decoration:none;" ><a href="'.$nuevo['website'][0].'" class="enlace"  style="color:#fcac00;text-decoration:none">'.$nuevo['website'][0].'</a></span>';
+          $result .='<br/> Website:&nbsp;<span style="color:#feb61c !Important;text-decoration:none;" ><a href="http://'.$nuevo['website'][0].'" class="enlace"  style="color:#fcac00;text-decoration:none">'.$nuevo['website'][0].'</a></span>';
           
           $result .='</div><br/>
         </td>
@@ -256,4 +256,16 @@ function nuevo_manda_email( $post_id ) {
     }
     add_action ( 'save_post', 'nuevo_manda_email' );//save_post
 
+    add_action( 'admin_menu', 'my_custom_menu_page' );
 
+    function my_custom_menu_page(){
+      add_menu_page( 'custom menu title', 'Analytics', 'manage_options', '../analytics/');
+    }
+
+function my_remove_meta_boxes() {
+  remove_meta_box('categorydiv', 'post', 'advanced');
+  remove_meta_box('tagsdiv-post_tag', 'post', 'advanced');
+  remove_meta_box('commentsdiv', 'post', 'advanced');
+  remove_meta_box('revisionsdiv', 'post', 'advanced');
+}
+add_action( 'admin_menu', 'my_remove_meta_boxes' );

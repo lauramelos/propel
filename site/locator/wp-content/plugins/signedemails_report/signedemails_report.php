@@ -26,8 +26,8 @@ function wp_addreport_options() {
  <table><tr><td>Status Email:</td>
  <td><select name="filtra">
  <option value=>All</option>
- <option value="where enviado=0" <? If ($_POST['filtra']=='where enviado=0') echo 'selected';?>>Suscribed</option>
- <option value="where enviado=1" <? If ($_POST['filtra']=='where enviado=1') echo 'selected';?>>Unsuscribed</option>
+ <option value="where enviado=0" <? If ($_POST['filtra']=='where enviado=0') echo 'selected';?>>Subscribed</option>
+ <option value="where enviado=1" <? If ($_POST['filtra']=='where enviado=1') echo 'selected';?>>Unsubscribed</option>
  </select>
  </td><td><input type="submit" value="Go"></td></tr>
  </table>
@@ -63,7 +63,7 @@ foreach ($res_emails as $sigema){
 <td><?=$sigema->Email?></td>
 <td><?=$sigema->Zip?></td>
 <td><?=$sigema->Distance?></td>
-<td><? if ($sigema->enviado == 0) echo '<span style="color:#990000">Suscribed</span>'; else echo '<span style="color:#006633">Unsuscribed</span>';?></td>
+<td><? if ($sigema->enviado == 0) echo '<span style="color:#990000">Subscribed</span>'; else echo '<span style="color:#006633">Unsubscribed</span>';?></td>
 <td><?=$sigema->count?></td>
 </tr>
 <? } ?>
