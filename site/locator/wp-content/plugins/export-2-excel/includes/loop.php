@@ -39,6 +39,7 @@
 				<th>zip</th>
 				<th>phone_number</th>
 				<th>website</th>
+				<th>territory_manager</th>
               </tr>';
      // while (have_posts()) {
 	 while ($query->have_posts()) : $query->the_post();
@@ -62,6 +63,7 @@
 			<td>' . get_field('zip') . '</td>
 			<td>' . get_field('phone_number') . '</td>
 			<td>' . get_field('website') . '</td>
+			<td>' . get_field('territory_manager') . '</td>
           </tr>'; 
       //}
 	  endwhile;

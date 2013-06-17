@@ -209,8 +209,10 @@ function nuevo_manda_email( $post_id ) {
             
           if ($nuevo['phone_number'][0]<>'')
           $result .='Tel: <a style="color:#9c9c9c; text-decoration: none;" href="tel:'.$nuevo['phone_number'][0].'" value="+'.$nuevo['phone_number'][0].'" target="_blank" style="color:#fcac00;text-decoration:none">'.$nuevo['phone_number'][0].'</a>';
-          if ($nuevo['email_address'][0]<>'')
-          $result .='<br/> Email: &nbsp;<span style="color:#feb61c !Important;text-decoration:none;" ><a href="mailto:'.$nuevo['email_address'][0].'" class="enlace" style="color:#fcac00;text-decoration:none">'.$nuevo['email_address'][0].'</a></span>';
+          // next two lines commented since client asked to not use email any 
+          // more.
+          //if ($nuevo['email_address'][0]<>'')
+          //$result .='<br/> Email: &nbsp;<span style="color:#feb61c !Important;text-decoration:none;" ><a href="mailto:'.$nuevo['email_address'][0].'" class="enlace" style="color:#fcac00;text-decoration:none">'.$nuevo['email_address'][0].'</a></span>';
           if ($nuevo['website'][0]<>'')
           $result .='<br/> Website:&nbsp;<span style="color:#feb61c !Important;text-decoration:none;" ><a href="http://'.$nuevo['website'][0].'" class="enlace"  style="color:#fcac00;text-decoration:none">'.$nuevo['website'][0].'</a></span>';
           
