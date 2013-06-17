@@ -62,7 +62,7 @@ if ( isset($_POST['Submit']) ) {
     <form name="export" action="<?php echo $form_action; ?>" method="post" onsubmit="return validate_form();">
       <div class="selection_criteria" >
         <div class="popupmain" style="float:left;">
-          <p class="req_head"><?php echo 'Choose your criteria';?></p>
+          <p class="req_head"><?php echo 'Selection criteria';?></p>
           <div class="formfield">
             <p class="row1">
               <label><?php echo 'Selection Criteria:';?></label>
@@ -83,7 +83,7 @@ if ( isset($_POST['Submit']) ) {
                 <input type="radio" class="post_type" name="e2e_post_type" value="<?php echo $post_type->name; ?>" onclick="dates.style.display='none';"  />
                 </i>
                 <small>
-				PHYSICIANS
+				Physicians
                 <?php //echo $post_type->label; ?>
                 </small> <?php
 				$count++;

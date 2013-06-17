@@ -16,9 +16,6 @@
     //if (have_posts()) {
 	if ($query->post_count > 0) {
       $str .= '<tr>
-                <th>csv_post_title</th>
-                <th>csv_post_post</th>
-                <th>csv_post_excerpt</th>
                 <th>first_name_1</th>
                 <th>last_name_1</th>
 				<th>designation_1</th>
@@ -41,17 +38,13 @@
 				<th>state</th>
 				<th>zip</th>
 				<th>phone_number</th>
-				<th>email_address</th>
 				<th>website</th>
               </tr>';
      // while (have_posts()) {
 	 while ($query->have_posts()) : $query->the_post();
 	 
         $str.= '
-          <tr>
-            <td>' . mb_convert_encoding(get_the_title(), 'HTML-ENTITIES', 'UTF-8') . '</td>
-            <td>post</td>
-            <td>excerpt</td>';
+          <tr>';
 				for ($i=1; $i<6; $i++){ 
 				if (get_field('first_name_'.$i) <> '') {
             	$str.='<td>' .get_field('first_name_'.$i) .'</td>
@@ -68,7 +61,6 @@
 			<td>' . get_field('state') . '</td>
 			<td>' . get_field('zip') . '</td>
 			<td>' . get_field('phone_number') . '</td>
-			<td>' . get_field('email_address') . '</td>
 			<td>' . get_field('website') . '</td>
           </tr>'; 
       //}
