@@ -37,8 +37,8 @@ Author: Denis Kobozev
 
 class CSVImporterPlugin {
     var $defaults = array(
-        'csv_post_title'      => null,
-        'csv_post_post'       => null,
+        'csv_post_title'      => " ",
+        'csv_post_post'       => " ",
         'csv_post_type'       => null,
         'csv_post_excerpt'    => null,
         'csv_post_date'       => null,
@@ -259,7 +259,7 @@ class CSVImporterPlugin {
         }
 
         $new_post = array(
-            'post_title'   => convert_chars($data['csv_post_title']),
+            'post_title'   => convert_chars($data['first_name_1'].' '.$data['last_name_1']),
             'post_content' => wpautop(convert_chars($data['csv_post_post'])),
             'post_status'  => $opt_draft,
             'post_type'    => $type,
@@ -269,6 +269,7 @@ class CSVImporterPlugin {
             'post_author'  => $this->get_auth_id($data['csv_post_author']),
             'tax_input'    => $this->get_taxonomies($data),
             'post_parent'  => $data['csv_post_parent'],
+            'territory_manager'  => $data['territory_manager'],
         );
 
         // pages don't have tags or categories
