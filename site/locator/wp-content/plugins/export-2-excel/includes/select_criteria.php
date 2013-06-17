@@ -1,7 +1,7 @@
 <?php
   ini_set('memory_limit', '256M');
   ini_set('max_execution_time', 300); //300 seconds = 5 minutes
-  $extensions = array('xls' => '.xls', 'xlsx' => '.xlsx');
+  $extensions = array('xls' => '.xls'); // temporary eliminated, 'xlsx' => '.xlsx');
   $args = array (
       'public'   => true
   );
@@ -65,7 +65,7 @@ if ( isset($_POST['Submit']) ) {
           <p class="req_head"><?php echo 'Selection criteria';?></p>
           <div class="formfield">
             <p class="row1">
-              <label><?php echo 'Selection Criteria:';?></label>
+              <label><?php echo 'Selection criteria:';?></label>
               <em>
 
               <?php
