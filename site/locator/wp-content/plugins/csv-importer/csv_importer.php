@@ -37,7 +37,7 @@ Author: Denis Kobozev
 
 class CSVImporterPlugin {
     var $defaults = array(
-        'csv_post_title'      => " ",
+        'csv_post_title'      => null,
         'csv_post_post'       => " ",
         'csv_post_type'       => null,
         'csv_post_excerpt'    => null,
