@@ -253,7 +253,8 @@ function nuevo_manda_email( $post_id ) {
     }
   }
 }
-add_action ( 'save_post', 'nuevo_manda_email' );//save_post
+
+//add_action ( 'save_post', 'nuevo_manda_email' );//save_post
 
 function my_custom_menu_page(){
   add_menu_page( 'custom menu title', 'Analytics', 'manage_options', '../analytics/');
@@ -268,9 +269,6 @@ function my_remove_meta_boxes() {
 }
 add_action( 'admin_menu', 'my_remove_meta_boxes' );
 
+add_action ('new_to_publish','nuevo_manda_email');
+add_action ('draft_to_publish','nuevo_manda_email');
 
-add_action ('new_to_publish','insert_post_function');
-
-function insert_post_function() {
-
-}
