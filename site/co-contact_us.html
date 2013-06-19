@@ -51,14 +51,15 @@ $(function(){
 				<div id="newsalert">
 					<div id="newsalertleft">NEWS ALERT:</div>
 					<ul id="ticker01">
-						<li><span>Nov 2012:</span><a href="docs/IntersectENT_PressRelease-PROPEL_mini_FDA_Approval_2012_11_06.pdf" target="_blank">Intersect ENT Announces FDA Approval PROPEL Mini, Allowing More Chronic Sinusitis Patients to Benefit from Localized Drug Delivery</a></li>
+						<li><span>May 2013:</span><a href="news-in_the_news.html">Why Intersect ENT is an Example of Hope for the Medtech Industry</a></li>
+						<li><span>Mar 2013:</span><a href="news-in_the_news.html">Sinus “Stent” Helps Patients Breathe Easier</a></li>
 						<li><span>Jan 2013:</span><a href="news-in_the_news.html">Warren Man With Chronic Sinusitus Breathes Easy After Implant Surgery</a></li>
 						<li><span>Jan 2013:</span><a href="docs/IntersectENT_PressRelease-RESOLVE_Initiation_Press_Release.pdf" target="_blank">Intersect ENT Initiates U.S. Clinical Study of a Novel In-Office Treatment for Chronic Sinusitis Patients</a></li>
+						
+						<li><span>May 2013:</span><a href="news-in_the_news.html">Why Intersect ENT is an Example of Hope for the Medtech Industry</a></li>
 						<li><span>Mar 2013:</span><a href="news-in_the_news.html">Sinus “Stent” Helps Patients Breathe Easier</a></li>
-						<li><span>Nov 2012:</span><a href="docs/IntersectENT_PressRelease-PROPEL_mini_FDA_Approval_2012_11_06.pdf" target="_blank">Intersect ENT Announces FDA Approval PROPEL Mini, Allowing More Chronic Sinusitis Patients to Benefit from Localized Drug Delivery</a></li>
 						<li><span>Jan 2013:</span><a href="news-in_the_news.html">Warren Man With Chronic Sinusitus Breathes Easy After Implant Surgery</a></li>
 						<li><span>Jan 2013:</span><a href="docs/IntersectENT_PressRelease-RESOLVE_Initiation_Press_Release.pdf" target="_blank">Intersect ENT Initiates U.S. Clinical Study of a Novel In-Office Treatment for Chronic Sinusitis Patients</a></li>
-						<li><span>Mar 2013:</span><a href="news-in_the_news.html">Sinus “Stent” Helps Patients Breathe Easier</a></li>
 					</ul>
 				</div>
 				<div id="newsalert-bottom"></div>
@@ -309,83 +310,75 @@ $(function(){
 <!-- body-center END -->
 
 <!-- Inline Modal Content -->
-<div style='display:none'> 
+    <div style='display:none'>
+      <div id='inline_image1' class="inline-content" style="width:780px;">
+        <a href="#" class="cbox-close"></a>
+        <img src="_img/_content/illustration1.jpg" alt="" />
+        <div class="caption">
+          <h1>Sinus Illustration</h1>
+          <p>The sinuses are air-filled cavities located within the bones around the nose and eyes that allow for natural ventilation and drainage.</p>
+        </div>
+      </div>
+      <div id="physician_locator" class="inline-content" style="width:400px;padding:0px;">
+        <div style="background-color:#faac23;height:70px;width:400px;color:#fff; padding-top:34px;">
+          <a href="#" class="cbox-close-orange"></a>
+          <p id="physicianHeader" class="find-title">FIND A PROPEL<br /> PHYSICIAN NEAR YOU</p>
+        </div>
+        <div style="background-color:#fff;height:320px;width:400px;color:#989794;font-family:Arial;font-size:15px;line-height:19px;">
+          <p id="physicianInstructions" style="padding:30px 50px 17px 50px;">
+          Please fill in your zip code and select a distance to find a physician nearest to you.
+          </p>
+          <div id="locatorWrapper" style="padding:0px 50px 45px 50px;">
+            <!--<form id="locator"
+              action="http://67.222.18.91/~propel/locator/?page_id=4"> -->
+              <form method="get" action="http://67.222.18.91/~propel/locator/find-propel-physician/" id="locator" onsubmit="return validateForm()">
+                <div style="float:left;">
+                  <div class="physician_field" id="emailDiv"><input type="text" name="zipcode" id="zipcode" class="physician_field" placeholder="Zip code*" onchange="validateTextZip()"></div>
+                  <div class="physician_field" id="zipDiv"><select name="distance" id="distance" class="physician_field chzn-select-no-single" tabindex="5" onchange="validateComboDistance()">
+                      <option value="" disabled="" selected="" style="display:none;">Distance*</option>
+                      <option value="25">25 miles</option>
+                      <option value="50">50 miles</option>
+                      <option value="100">100 miles</option>
+                      <option value="250">250 miles</option>
+                  </select></div>
+                </div>
+                <div style="clear:both;padding-top:5px;">
+                  <input id="physicianSubmit" name="submit" type="submit" style="display:block;width:180px;" />
+                  <!--<input id="submit" name="submit" type="submit"
+                  style="display:block" /> -->
+                  <span style="float:left; margin-top:45px; display:block; margin-bottom:20px;"><i>* Required fields</i></span>
+                </div>
+                <script src="chosen/chosen.jquery.js" type="text/javascript"></script>
+                <script type="text/javascript">
+                  var config = {
+                    '.chzn-select' : {},
+                    '.chzn-select-deselect' : {allow_single_deselect:true},
+                    '.chzn-select-no-single' : {disable_search_threshold:10},
+                    '.chzn-select-no-results': {no_results_text:'Oops, nothing found!'},
+                    '.chzn-select-width' : {width:"95%"}
+                  }
+                  for (var selector in config) {
+                    $(selector).chosen(config[selector]);
+                  }
+                </script>
+              </form>
+            </div>
+          </div>
+        </div> 
 
-
-		<div id='inline_image1' class="inline-content" style="width:780px;">
-			<a href="#" class="cbox-close"></a>
-			<img src="_img/_content/illustration1.jpg" alt="" />
-			<div class="caption">
-				<h1>Sinus Illustration</h1>
-				<p>The sinuses are air-filled cavities located within the bones around the nose and eyes that allow for natural ventilation and drainage.</p>
-			</div>
-		</div> 
 		
-		<div id="physician_locator" class="inline-content" style="width:400px;padding:0px;">
-			<div style="background-color:#faac23;height:70px;width:400px;color:#fff; padding-top:34px;">
-				<a href="#" class="cbox-close-orange"></a>
-				<p id="physicianHeader" class="find-title">FIND A PROPEL<br /> PHYSICIAN NEAR YOU</p>
-			</div>
-			<div style="background-color:#fff;height:320px;width:400px;color:#989794;font-family:Arial;font-size:15px;line-height:19px;">
-			<p id="physicianInstructions" style="padding:30px 50px 17px 50px;">
-					Please fill in your zip code and select a distance to find a physician nearest to you.
-				</p>
-				<div id="locatorWrapper" style="padding:0px 50px 45px 50px;">
-					
-				<!--<form id="locator" action="http://67.222.18.91/~propel/locator/?page_id=4"> -->
-				<form method="get" action="http://67.222.18.91/~propel/locator/find-propel-physician/" id="locator" onsubmit="return validateForm()">
-						<div style="float:left;">
-							
-							<div class="physician_field" id="emailDiv"><input type="text" name="zipcode" id="zipcode" class="physician_field"  placeholder="Zip code*" onchange="validateTextZip()"></div>
-							<div class="physician_field" id="zipDiv"><select name="distance" id="distance" class="physician_field chzn-select-no-single" tabindex="5" onchange="validateComboDistance()">
-<option value="" disabled="" selected="" style="display:none;">Distance*</option>
-  <option value="25">25 miles</option>
-
-  <option value="50">50 miles</option>
-
-  <option value="100">100 miles</option>
-
-  <option value="250">250 miles</option>
-
-</select></div>
-						</div>
-						
-						<div style="clear:both;padding-top:5px;">
-						<input id="physicianSubmit" name="submit" type="submit" style="display:block;width:180px;" /> 
-							<!--<input id="submit" name="submit" type="submit" style="display:block" /> -->
-							<span style="float:left; margin-top:45px; display:block; margin-bottom:20px;"><i>* Required fields</i></span>
-						</div>
-                        <script src="chosen/chosen.jquery.js" type="text/javascript"></script>
-  <script type="text/javascript"> 
-    var config = {
-      '.chzn-select'           : {},
-      '.chzn-select-deselect'  : {allow_single_deselect:true},
-      '.chzn-select-no-single' : {disable_search_threshold:10},
-      '.chzn-select-no-results': {no_results_text:'Oops, nothing found!'},
-      '.chzn-select-width'     : {width:"95%"}
-    }
-    for (var selector in config) {
-      $(selector).chosen(config[selector]);
-    }
-  </script>
-					</form>
-				</div>
-			</div>
-		</div>  
-		
-		<div id="physician_success" class="inline-content" style="width:400px;padding:0px;">
-			<div style="background-color:#faac23;height:105px;width:400px;color:#fff;font-family:'UrbanoBoldExpanded';font-size:25px;">
+		<div id="physician_success" class="inline-content" style="width:723px;padding:0px;">
+			<div style="background-color:#faac23;height:105px;width:723px;color:#fff;font-family:'UrbanoBoldExpanded';font-size:25px;">
 				<a href="#" class="cbox-close-orange"></a>
 				<p style="padding:60px 50px 25px 50px;">YOUR REQUEST HAS BEEN SUBMITTED.</p>
 			</div>
-			<div style="background-color:#fff;height:320px;width:400px;color:#989794;font-family:Arial;font-size:15px;line-height:19px;">
+			<div style="background-color:#fff;height:320px;width:723px;color:#989794;font-family:Arial;font-size:15px;line-height:19px;">
 				<p style="padding:20px 50px 75px 50px;">
 					An Intersect ENT representative will respond within 2-3 business days.<br /><br />
 					<a href="#" class="cbox-close-link">CLOSE THIS WINDOW</a>
 				</p>
 			</div>
 		</div> 
-
 		<div id="inline_video2" class="inline-content">
 			<a href="#" class="cbox-close"></a>
 			<div id="vid2" style="width:654px; height:390px; ">
@@ -395,76 +388,62 @@ $(function(){
 </div>
 
 <script>
-$(document).ready(function() 
-{ 
-	//document.getElementById("distance_chzn").children[0].onclick = function() { validateComboDistance(); };	
-});
-
-function isValidUSZip(sZip) 
-{
-	return /^\d{5}(-\d{4})?$/.test(sZip);
-}
-
-function validateTextZip()
-{
-document.getElementById('zipcode').style.backgroundColor = '#eeeeee';
-document.getElementById('zipcode').style.color = '#9b9b99';
-document.getElementById('emailDiv').style.backgroundColor = '#eeeeee';
-document.getElementById('emailDiv').style.color = '#9b9b99';
-document.getElementById('zipcode').className = 'physician_field placeholderdefault'; 
-
-		if(!isValidUSZip(document.getElementById('zipcode').value))
-		{
-			document.getElementById('zipcode').style.backgroundColor = 'red';
-			document.getElementById('zipcode').style.color = '#ffffff';
-			document.getElementById('emailDiv').style.backgroundColor = 'red';
-			document.getElementById('emailDiv').style.color = '#ffffff';
-			document.getElementById('zipcode').className = 'physician_field placeholdererror'; 
-			return false;
-		}
-return true;
-}
-
-function validateComboDistance()
-{
-	document.getElementById('distance_chzn').children[0].style.backgroundColor = '#eeeeee';
-	document.getElementById('distance_chzn').children[0].style.color = '#9b9b99';
-	document.getElementById('zipDiv').style.backgroundColor = '#eeeeee';
-	document.getElementById('zipDiv').style.color = '#9b9b99';
-	
-	if(document.getElementById('distance').value == '')
-	{
-		document.getElementById('distance_chzn').children[0].style.backgroundColor = 'red';
-		document.getElementById('distance_chzn').children[0].style.color = 'white';
-		document.getElementById('zipDiv').style.backgroundColor = 'red';
-		document.getElementById('zipDiv').style.color = '#ffffff';
-		return false;
-	}
-	return true;
-}
-
-function validateForm()
-{
-var result = true;
-	if(!validateComboDistance())
-	{
-		result = false;
-	}
-	
-	if(!validateTextZip())
-	{
-		result = false;
-	}
-	
-return result;
-}
+  $(document).ready(function()
+  {
+    //document.getElementById("distance_chzn").children[0].onclick = function() { validateComboDistance(); };
+  });
+  function isValidUSZip(sZip)
+  {
+    return /^\d{5}(-\d{4})?$/.test(sZip);
+  }
+  function validateTextZip()
+  {
+    document.getElementById('zipcode').style.backgroundColor = '#eeeeee';
+    document.getElementById('zipcode').style.color = '#9b9b99';
+    document.getElementById('emailDiv').style.backgroundColor = '#eeeeee';
+    document.getElementById('emailDiv').style.color = '#9b9b99';
+    document.getElementById('zipcode').className = 'physician_field placeholderdefault';
+    if(!isValidUSZip(document.getElementById('zipcode').value))
+    {
+      document.getElementById('zipcode').style.backgroundColor = 'red';
+      document.getElementById('zipcode').style.color = '#ffffff';
+      document.getElementById('emailDiv').style.backgroundColor = 'red';
+      document.getElementById('emailDiv').style.color = '#ffffff';
+      document.getElementById('zipcode').className = 'physician_field placeholdererror';
+      return false;
+    }
+    return true;
+  }
+  function validateComboDistance()
+  {
+    document.getElementById('distance_chzn').children[0].style.backgroundColor = '#eeeeee';
+    document.getElementById('distance_chzn').children[0].style.color = '#9b9b99';
+    document.getElementById('zipDiv').style.backgroundColor = '#eeeeee';
+    document.getElementById('zipDiv').style.color = '#9b9b99';
+    if(document.getElementById('distance').value == '')
+    {
+      document.getElementById('distance_chzn').children[0].style.backgroundColor = 'red';
+      document.getElementById('distance_chzn').children[0].style.color = 'white';
+      document.getElementById('zipDiv').style.backgroundColor = 'red';
+      document.getElementById('zipDiv').style.color = '#ffffff';
+      return false;
+    }
+    return true;
+  }
+  function validateForm()
+  {
+    var result = true;
+    if(!validateComboDistance())
+    {
+      result = false;
+    }
+    if(!validateTextZip())
+    {
+      result = false;
+    }
+    return result;
+  }
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
