@@ -267,3 +267,10 @@ function my_remove_meta_boxes() {
   remove_meta_box('revisionsdiv', 'post', 'advanced');
 }
 add_action( 'admin_menu', 'my_remove_meta_boxes' );
+
+
+add_action ('new_to_publish','insert_post_function');
+
+function insert_post_function() {
+
+}

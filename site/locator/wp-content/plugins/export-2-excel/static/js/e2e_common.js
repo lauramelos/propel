@@ -7,10 +7,6 @@
       alert ('Please select a selection criteria');
       return false;
     }
-    var ext = jQuery("input[name=ext]:checked").val();
-    if (typeof(ext) == 'undefined') {
-      alert ('Please select an extension');
-      return false;
-    }
+
     return true;
   }

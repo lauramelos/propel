@@ -12,15 +12,13 @@
 if ( isset($_POST['Submit']) ) {
 	if (empty($_POST) || !check_admin_referer('e2e_export_data' )  ) {
     wp_die('Sorry, your nonce did not verify.');
-    } elseif (!isset($_POST['ext']) || !array_key_exists($_POST['ext'], $extensions)  ) {
-    wp_die('Please select a valid extension.');
     }  elseif (!isset($_POST['e2e_post_type']) || ( !array_key_exists($_POST['e2e_post_type'], $post_types ) && $_POST['e2e_post_type'] != 'signed_emails'  && $_POST['e2e_post_type'] != 'searches' && $_POST['e2e_post_type'] != 'attachment') ) {
      wp_die('Please select a post type.');
     }  elseif ($_POST['e2e_post_type'] == 'searches' && ( empty($_POST['date_from']) || empty($_POST['date_to']) ) ) {
 	wp_die('Please select a correct date.');
 	}	else {
       	$post_type = $_POST['e2e_post_type'];
-      	$ext = $_POST['ext'];
+      	$ext = 'xls'; //$_POST['ext'];
       	$str = '';
       		if ( is_multisite() && $network_admin ) {
 
@@ -49,11 +47,11 @@ if ( isset($_POST['Submit']) ) {
 			
 			}
 		
-      		if ( $ext == 'xls' ) {
+//      		if ( $ext == 'xls' ) {
         	header("Content-type: application/vnd.ms-excel;");
-      		} elseif( $ext == 'xlsx') {
-        	header("Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, charset=utf-8;");
-      		}
+//      		} elseif( $ext == 'xlsx') {
+//        	header("Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, charset=utf-8;");
+//      		}
       	header("Content-Disposition: attachment; filename=" . $filename);
        	print $str;//$str variable is used in loop.php
       	exit();
@@ -129,12 +127,13 @@ if ( isset($_POST['Submit']) ) {
                 } ?>
               </em>
             </p>
-            <p class="row1">
+<!-- temporary disabled
+              <p class="row1">
               <label><?php echo 'Select extension:'; ?></label>
               <em> <?php
                 e2e_display_radio_buttons($extensions, 'ext'); ?>
               </em>
-            </p>
+            </p> -->
             <?php wp_nonce_field('e2e_export_data'); ?>
 
             <p class="row1">
