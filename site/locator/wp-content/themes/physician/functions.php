@@ -86,7 +86,8 @@ function my_register_fields() {
   include_once('/home/propel/public_html/locator/wp-content/themes/physician/functions.php');
 }
 
-function nuevo_manda_email( $post_id ) {
+function nuevo_manda_email( $post ) {
+  $post_id = $post->ID;
   $post = get_post($post_id);
   $url= network_site_url();
 
