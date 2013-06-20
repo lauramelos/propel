@@ -224,7 +224,6 @@ class CSVImporterPlugin {
         /*------*/
       
         foreach ($csv->connect() as $csv_data) {
-            $ifpost = get_page_by_title( convert_chars($data['first_name_1'].' '.$data['last_name_1'].' '.$data['zip']),'OBJECT', 'post' );
             if ($post_id = $this->create_post($csv_data, $options)) {
                 $comments += $this->add_comments($post_id, $csv_data);
                 $this->create_custom_fields($post_id, $csv_data);
@@ -287,6 +286,7 @@ class CSVImporterPlugin {
             $new_post['post_category'] = $cats['post'];
         }
         // code added to check if post exists, so we'll update it
+        $ifpost = get_page_by_title( convert_chars($data['first_name_1'].' '.$data['last_name_1'].' '.$data['zip']),'OBJECT', 'post' );
         if (isset($ifpost)) {
           $new_post['ID'] = $ifpost->ID;
           $id = wp_update_post( $new_post );
@@ -562,23 +562,13 @@ class CSVImporterPlugin {
       foreach ($data as $k => $v) {
         // anything that doesn't start with csv_ is a custom field
         if (!preg_match('/^csv_/', $k) && $v != '') {
-          if (isset($ifpost)) {
-          $postid = $ifpost->ID;
-          update_post_meta($postid, $k, $v);
-          } else {
-          add_post_meta($post_id, $k, $v);
-          }
+          update_post_meta($post_id, $k, $v);
           if ($k=='address' || $k=='state' || $k=='city' || $k=='zip' ) {
             $aline.=$v.' ';
           }
         }
       }
-      if (isset($ifpost)) {
-      $postid = $ifpost->ID;
-      update_post_meta($postid, 'address_line', $aline);
-      } else {
-      add_post_meta($post_id, 'address_line', $aline);
-      }
+      update_post_meta($post_id, 'address_line', $aline);
     }
 
     function get_auth_id($author) {
