@@ -241,6 +241,9 @@ class CSVImporterPlugin {
         if ($skipped) {
             $this->log['notice'][] = "<b>Skipped {$skipped} posts (most likely due to empty title, body and excerpt).</b>";
         }
+        if ($updated) {
+            $this->log['notice'][] = "<b>Updated {$updated} posts (Seems they were existing previuosly).</b>";
+        }
         $this->log['notice'][] = sprintf("<b>Imported {$imported} posts and {$comments} comments in %.2f seconds.</b>", $exec_time);
         $this->print_messages();
     }
@@ -282,16 +285,23 @@ class CSVImporterPlugin {
             $cats = $this->create_or_get_categories($data, $opt_cat);
             $new_post['post_category'] = $cats['post'];
         }
-
-        // create!
+        // code added to check if post exists, so we'll update it
+        $ifpost = get_page_by_title( convert_chars($data['first_name_1'].' '.$data['last_name_1']), 'post' );
+        $updated = 0;
+        if ($ifpost) {
+          $new_post['ID'] = $ifpost->ID;
+          wp_update_post( $new_post );
+          $updated++;
+        } else {
+        // create! (here the previous existing code to insert it if not exists)
         $id = wp_insert_post($new_post);
-
         if ('page' !== $type && !$id) {
             // cleanup new categories on failure
             foreach ($cats['cleanup'] as $c) {
                 wp_delete_term($c, 'category');
             }
         }
+      }
         return $id;
     }
 
