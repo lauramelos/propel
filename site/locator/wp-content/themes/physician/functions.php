@@ -181,7 +181,7 @@ function nuevo_manda_email( $post ) {
           <td colspan="2">
             <img src="'.$url.'/wp-content/themes/physician/_img/mailapropel.jpg"/>
             <p style="color:#9c9c9c; font-size:12px; font-family:Arial, Helvetica, sans-serif;line-height:22px">
-            A new PROPEL physician has been add in your area. Please 
+            A new PROPEL physician has been added in your area. Please 
             <a href="'.$url.'/../" style="color:#feb61c; text-decoration:none;">visit our website</a> 
             or contact a physician near you to find out more about PROPEL.</p>
           </td>
@@ -233,13 +233,13 @@ function nuevo_manda_email( $post ) {
           <tr>
            <td colspan="3">
              <p style="color:#a8a8a8; font-size:11px; font-family:Helvetica, Arial;padding:0 30px;">
-             You are receiving this email because you or someone using this email address signd up to 
+             You are receiving this email because you or someone using this email address signed up to 
              receive a notification when a PROPEL physician is available within "';
       for ($a=0; $a<count($emails_T);$a++){
         $result31 = $result3.$distan_S[$a].'&nbsp;miles" of your area ("'.$zip_S[$a].'").<br /></p>
           <p  style="color:#a8a8a8; font-size:11px; font-family:Helvetica, Arial;padding:0 30px;">Please <a href="'.$url.'/find-propel-physician/?unsuscribe='.$emails_T[$a].'" style="color:#fcac00;text-decoration:none" > click here</a> if you\'d like to stop receiving these notifications.</p>
           </td></tr></table>';
-        $result2  = '<p style="color:#9c9c9c; font-size:12px; font-family:Helvetica, Arial ; text-align:right;line-height:18px;">Distance: '.$distan_T[$a].'miles <br /><span style="color:#fcac00;"><a href="http://maps.google.com?q='.$direc.'&hl=en&t=h&mra=ls&z=16&layer=t class="enlace" target="_blank" style="color:#fcac00;text-decoration:none">Directions</a></span></p></td>';
+        $result2  = '<p style="color:#9c9c9c; font-size:12px; font-family:Helvetica, Arial ; text-align:right;line-height:18px;">Distance: '.$distan_T[$a].' miles <br /><span style="color:#fcac00;"><a href="http://maps.google.com?q='.$direc.'&hl=en&t=h&mra=ls&z=16&layer=t class="enlace" target="_blank" style="color:#fcac00;text-decoration:none">Directions</a></span></p></td>';
 
         //$subject  = $names_T[$a].", we found a PROPEL PHYSICIAN near you!";
         $subject = "New PROPEL Physician in your area";
@@ -248,13 +248,16 @@ function nuevo_manda_email( $post ) {
         if (wp_mail( $emails_T[$a], $subject, $result.$result2.$result31 )) {
          //$yaenvio= $wpdb->query("update datauserword set enviado=1 where Email='".$emails_T[$a]."'");
          //aca hay que agregar uno al campo count
-         $yaenvio= $wpdb->query("update datauserword set count = count + 1  where Email='".$emails_T[$a]."' AND Zip = '".$zip_S[$a]."'");
+         $yaenvio= $wpdb->query("update datauserword set count = count + 1  where Email='".$emails_T[$a]."' AND Zip = ".$zip_S[$a]);
         }
       }
     }
   }
 }
 
+// next line commented, replaced for:
+// new-to-action and draft-to-action
+// instead.
 //add_action ( 'save_post', 'nuevo_manda_email' );//save_post
 
 function my_custom_menu_page(){
