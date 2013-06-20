@@ -211,14 +211,15 @@ class CSVImporterPlugin {
         }
 
         $skipped = 0;
+        $updated = 0;
         $imported = 0;
         $comments = 0;
       
         /*Agregado Telematica*/
-        global $wpdb;
+        //global $wpdb;
         
-        $wpdb->query("delete from wp_postmeta where post_id in (select ID from wp_posts where post_type='post'");
-        $wpdb->query( "delete from wp_posts where post_type='post'");
+        //$wpdb->query("delete from wp_postmeta where post_id in (select ID from wp_posts where post_type='post'");
+        //$wpdb->query("delete from wp_posts where post_type='post'");
         
         /*------*/
       
@@ -244,7 +245,8 @@ class CSVImporterPlugin {
         if ($updated) {
             $this->log['notice'][] = "<b>Updated {$updated} posts (Seems they were existing previuosly).</b>";
         }
-        $this->log['notice'][] = sprintf("<b>Imported {$imported} posts and {$comments} comments in %.2f seconds.</b>", $exec_time);
+        $imported = $imported - $updated;
+        $this->log['notice'][] .= sprintf("<b>Imported {$imported} posts and {$comments} comments in %.2f seconds.</b>", $exec_time);
         $this->print_messages();
     }
 
@@ -261,7 +263,7 @@ class CSVImporterPlugin {
         }
 
         $new_post = array(
-            'post_title'   => convert_chars($data['first_name_1'].' '.$data['last_name_1']),
+            'post_title'   => convert_chars($data['first_name_1'].' '.$data['last_name_1'].' '.$data['zip']),
             'post_content' => wpautop(convert_chars($data['csv_post_post'])),
             'post_status'  => $opt_draft,
             'post_type'    => $type,
@@ -286,23 +288,25 @@ class CSVImporterPlugin {
             $new_post['post_category'] = $cats['post'];
         }
         // code added to check if post exists, so we'll update it
-        $ifpost = get_page_by_title( convert_chars($data['first_name_1'].' '.$data['last_name_1']), 'post' );
-        $updated = 0;
-        if ($ifpost) {
+        $ifpost = get_page_by_title( convert_chars($data['first_name_1'].' '.$data['last_name_1'].' '.$data['zip']),'OBJECT', 'post' );
+
+        
+        if (isset($ifpost)) {
           $new_post['ID'] = $ifpost->ID;
-          wp_update_post( $new_post );
+          $id = wp_update_post( $new_post );
+          $id = $id ? $id : $ifpost->ID;
           $updated++;
         } else {
         // create! (here the previous existing code to insert it if not exists)
-        $id = wp_insert_post($new_post);
-        if ('page' !== $type && !$id) {
-            // cleanup new categories on failure
-            foreach ($cats['cleanup'] as $c) {
-                wp_delete_term($c, 'category');
-            }
+          $id = wp_insert_post($new_post);
         }
-      }
-        return $id;
+        if ('page' !== $type && !$id) {
+          // cleanup new categories on failure
+          foreach ($cats['cleanup'] as $c) {
+            wp_delete_term($c, 'category');
+          }
+        }
+       return $id;
     }
 
     /**
@@ -317,6 +321,7 @@ class CSVImporterPlugin {
             'post' => array(),
             'cleanup' => array(),
         );
+        $term_id=0;
         $items = array_map('trim', explode(',', $data['csv_post_categories']));
         foreach ($items as $item) {
             if (is_numeric($item)) {
@@ -561,7 +566,7 @@ class CSVImporterPlugin {
         // anything that doesn't start with csv_ is a custom field
         if (!preg_match('/^csv_/', $k) && $v != '') {
           add_post_meta($post_id, $k, $v);
-          if ($k=='address' || $k=='state' || $k=='city' || $k==zip ) {
+          if ($k=='address' || $k=='state' || $k=='city' || $k=='zip' ) {
             $aline.=$v.' ';
           }
         }
