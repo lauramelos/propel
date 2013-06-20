@@ -139,8 +139,8 @@ function nuevo_manda_email( $post ) {
         }
       } 
       $banc=0;
-      if (trim($nuevo['address_line_1'][0]) <>'' ) {
-        $location = explode('|',$nuevo['address_line_1'][0]);
+      if (trim($nuevo['address_line'][0]) <>'' ) {
+        $location = explode('|',$nuevo['address_line'][0]);
         if ($location[1]<>''){
           $temp = explode(','  , $location[1]);
           $lat = (float) $temp[0];
@@ -150,7 +150,7 @@ function nuevo_manda_email( $post ) {
         if (strlen($location[0])>1)
           $direc=$location[0];
         else
-          $direc=$nuevo['address_line_1'][0];
+          $direc=$nuevo['address_line'][0];
       } else $direc=$nuevo['address'][0].', '.$nuevo['city'][0].', '.$nuevo['state'][0].' + '.$nuevo['zip'][0];
       if ($banc==0){
         $details_url = "http://maps.googleapis.com/maps/api/geocode/json?address=".$direc."&sensor=false";

@@ -213,15 +213,15 @@ class CSVImporterPlugin {
         $skipped = 0;
         $imported = 0;
         $comments = 0;
-		
-		/*Agregado Telematica*/
-		global $wpdb;
-		
-		$wpdb->query("delete from wp_postmeta where post_id in (select ID from wp_posts where post_type='post'");
-		$wpdb->query( "delete from wp_posts where post_type='post'");
-		
-		/*------*/
-		
+      
+        /*Agregado Telematica*/
+        global $wpdb;
+        
+        $wpdb->query("delete from wp_postmeta where post_id in (select ID from wp_posts where post_type='post'");
+        $wpdb->query( "delete from wp_posts where post_type='post'");
+        
+        /*------*/
+      
         foreach ($csv->connect() as $csv_data) {
             if ($post_id = $this->create_post($csv_data, $options)) {
                 $imported++;
@@ -247,8 +247,7 @@ class CSVImporterPlugin {
 
     function create_post($data, $options) {
         extract($options);
-		
-		$data = array_merge($this->defaults, $data);
+        $data = array_merge($this->defaults, $data);
         $type = $data['csv_post_type'] ? $data['csv_post_type'] : 'post';
         $valid_type = (function_exists('post_type_exists') &&
             post_type_exists($type)) || in_array($type, array('post', 'page'));
@@ -547,17 +546,17 @@ class CSVImporterPlugin {
     }
 
     function create_custom_fields($post_id, $data) {
-	$aline='';
-        foreach ($data as $k => $v) {
-		   // anything that doesn't start with csv_ is a custom field
-            if (!preg_match('/^csv_/', $k) && $v != '') {
-            add_post_meta($post_id, $k, $v);
-				if ($k=='address' || $k=='state' || $k=='city' || $k==zip ) {
-				$aline.=$v.' ';
-				}
-            }
+      $aline='';
+      foreach ($data as $k => $v) {
+        // anything that doesn't start with csv_ is a custom field
+        if (!preg_match('/^csv_/', $k) && $v != '') {
+          add_post_meta($post_id, $k, $v);
+          if ($k=='address' || $k=='state' || $k=='city' || $k==zip ) {
+            $aline.=$v.' ';
+          }
         }
-	add_post_meta($post_id, 'address_line_1', $aline);
+      }
+      add_post_meta($post_id, 'address_line', $aline);
     }
 
     function get_auth_id($author) {

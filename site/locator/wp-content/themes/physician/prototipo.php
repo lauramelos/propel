@@ -3,7 +3,6 @@
 /*Template Name: FIND-PROPEL*/
 
 ?>
-
 <?php get_header(); ?>
 <!-- inner-content START -->
   <div id="inner-content">
@@ -40,8 +39,7 @@
               var config = {
                 '.chzn-select'           : {},
                 '.chzn-select-deselect'  : {allow_single_deselect:true},
-                '	width:180px;
-.chzn-select-no-single' : {disable_search_threshold:10},
+                '.chzn-select-no-single' : {disable_search_threshold:10},
                 '.chzn-select-no-results': {no_results_text:'Oops, nothing found!'},
                 '.chzn-select-width'     : {width:"95%"}
               }
@@ -62,7 +60,7 @@
               array('Email' => $_GET['unsuscribe'])
             );
           ?>
-          <div class="<?php post_class(); ?> id="post-<?php the_ID(); ?>">
+          <div class="<?php post_class(); ?>" id="post-<?php the_ID(); ?>">
             <div class="ctotal">
               <p class="hay">
               <?php if($yaenvio) { echo "You have been unsubscribed from our physician notification list."; }
@@ -154,14 +152,14 @@
                    if (!in_array(get_the_ID(), $encontrados)) {
                      $encontrados[]=get_the_ID();
                      $suite = get_field('suite');
-                     $location = get_field('address_line_1'  );
+                     $location = get_field('address_line');
                      if ($location['coordinates']<>'' && strlen($location['coordinates'])>1){
                        $temp = explode(','  , $location['coordinates' ]);
                        $lat = (float) $temp[0];
                        $lng = (float) $temp[1];
                      }
                      if (strlen($location['address'])>1)
-                       $direc = $location['address' ];
+                       $direc = $location['address'];
                      else
                        $direc = $location;
                      ?>
@@ -194,7 +192,7 @@
                                  <?php if(!empty($suite)) { echo '<br>' . $suite; } ?>
                                  <br><? the_field('city') ?>, <? the_field('state')?> <? the_field('zip')?>
                                </span>
-                               <!--<iframe width="335" height="119" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.googleapis.com/maps/api/staticmap?center=<?php //echo the_field('address_line_1'); ?>"></iframe>-->
+                               <!--<iframe width="335" height="119" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.googleapis.com/maps/api/staticmap?center=<?php //echo the_field('address_line'); ?>"></iframe>-->
                                <div style="margin-top:20px; margin-bottom:18px;">
                                  <span>
                                    <?php $ph=get_field('phone_number');
