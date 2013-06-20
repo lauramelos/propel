@@ -145,6 +145,7 @@
                );
                $query= null;
                $query = new WP_Query($args);
+              
                if ($query->post_count > 0) {
                  $bant++;
                  while ($query->have_posts()) : $query->the_post(); ?>
