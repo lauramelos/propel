@@ -278,13 +278,9 @@
                   <option value="250" <?php if($_GET['distance']=='250' || $_POST['distancenf']=='250'){ echo "selected"; } ?>>250 miles</option> 
                 </select>
               </div>
-              <p style="margin-top:10px; margin-left:2px;">
-                <input type="checkbox" name="chagree" id="chagree" value="1" onchange="agree_submit()">
-                <label for="chagree"></label>&nbsp;I agree to the <a href='#'>Terms and Conditions of Use</a>
-              </p>
       
               <p id="sub_agree" style="margin-top:10px;">
-                <input type="submit" name="submitnf" id="submitnf" class="signup_not" value=" " disabled >
+                <input type="submit" name="submitnf" id="submitnf" class="signup" value=" " disabled >
               </p>
       
               <script src="http://67.222.18.91/~propel/locator/wp-content/themes/physician/chosen/chosen.jquery.js" type="text/javascript"></script>
