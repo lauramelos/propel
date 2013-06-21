@@ -286,4 +286,26 @@ function array_sort_bycolumn(&$array,$column,$dir = 'asc') {
   if($dir=='desc') $array = array_reverse($newarr);
   else $array = $newarr;
 }
-
+function add_address() {
+  global $parent_file;
+  if ( isset( $_GET['action'] ) && $_GET['action'] == 'edit' && isset( $_GET['post'] ) && $parent_file == 'edit.php') { ?>
+   <script type='text/javascript'>
+    jQuery(function($){                        
+      $(document).ready(function() {
+        var i = $('#location_input_fields_field_51a4b942ef900');
+        i.on('focus', function(e){
+          if($(this).val() == '' ){
+            var add = $('#acf-field-address').val() + ' ' +
+              $('#acf-field-city').val() + ' ' +
+              $('#acf-field-state').val() + ' ' +
+              $('#acf-field-zip').val(); 
+            $(this).val(add)
+          }
+        })
+      });
+    });
+  </script>
+<?php
+  }
+}
+add_filter('admin_head', 'add_address');
