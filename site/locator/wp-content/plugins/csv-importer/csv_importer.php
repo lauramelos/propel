@@ -173,141 +173,144 @@ class CSVImporterPlugin {
         }
     }
 
-    /**
-     * Handle POST submission
-     *
-     * @param array $options
-     * @return void
-     */
-    function post($options) {
-        if (empty($_FILES['csv_import']['tmp_name'])) {
-            $this->log['error'][] = 'No file uploaded, aborting.';
-            $this->print_messages();
-            return;
-        }
+  /**
+   * Handle POST submission
+   *
+   * @param array $options
+   * @return void
+   */
+  function post($options) {
+      global $updated, $imported;
+      if (empty($_FILES['csv_import']['tmp_name'])) {
+          $this->log['error'][] = 'No file uploaded, aborting.';
+          $this->print_messages();
+          return;
+      }
 
-        require_once 'File_CSV_DataSource/DataSource.php';
+      require_once 'File_CSV_DataSource/DataSource.php';
 
-        $time_start = microtime(true);
-        $csv = new File_CSV_DataSource;
-        $file = $_FILES['csv_import']['tmp_name'];
-        $this->stripBOM($file);
+      $time_start = microtime(true);
+      $csv = new File_CSV_DataSource;
+      $file = $_FILES['csv_import']['tmp_name'];
+      $this->stripBOM($file);
 
-        if (!$csv->load($file)) {
-            $this->log['error'][] = 'Failed to load file, aborting.';
-            $this->print_messages();
-            return;
-        }
+      if (!$csv->load($file)) {
+          $this->log['error'][] = 'Failed to load file, aborting.';
+          $this->print_messages();
+          return;
+      }
 
-        // pad shorter rows with empty values
-        $csv->symmetrize();
+      // pad shorter rows with empty values
+      $csv->symmetrize();
 
-        // WordPress sets the correct timezone for date functions somewhere
-        // in the bowels of wp_insert_post(). We need strtotime() to return
-        // correct time before the call to wp_insert_post().
-        $tz = get_option('timezone_string');
-        if ($tz && function_exists('date_default_timezone_set')) {
-            date_default_timezone_set($tz);
-        }
+      // WordPress sets the correct timezone for date functions somewhere
+      // in the bowels of wp_insert_post(). We need strtotime() to return
+      // correct time before the call to wp_insert_post().
+      $tz = get_option('timezone_string');
+      if ($tz && function_exists('date_default_timezone_set')) {
+          date_default_timezone_set($tz);
+      }
 
-        $skipped = 0;
-        $updated = 0;
-        $imported = 0;
-        $comments = 0;
+      $skipped = 0;
+      $updated = 0;
+      $imported = 0;
+      $comments = 0;
+    
+      /*Agregado Telematica*/
+      //global $wpdb;
       
-        /*Agregado Telematica*/
-        //global $wpdb;
-        
-        //$wpdb->query("delete from wp_postmeta where post_id in (select ID from wp_posts where post_type='post'");
-        //$wpdb->query("delete from wp_posts where post_type='post'");
-        
-        /*------*/
+      //$wpdb->query("delete from wp_postmeta where post_id in (select ID from wp_posts where post_type='post'");
+      //$wpdb->query("delete from wp_posts where post_type='post'");
       
-        foreach ($csv->connect() as $csv_data) {
-            if ($post_id = $this->create_post($csv_data, $options)) {
-                $imported++;
-                $comments += $this->add_comments($post_id, $csv_data);
-                $this->create_custom_fields($post_id, $csv_data);
-            } else {
-                $skipped++;
-            }
-        }
-
-        if (file_exists($file)) {
-            @unlink($file);
-        }
-
-        $exec_time = microtime(true) - $time_start;
-
-        if ($skipped) {
-            $this->log['notice'][] = "<b>Skipped {$skipped} posts (most likely due to empty title, body and excerpt).</b>";
-        }
-        if ($updated) {
-            $this->log['notice'][] = "<b>Updated {$updated} posts (Seems they were existing previuosly).</b>";
-        }
-        $imported = $imported - $updated;
-        $this->log['notice'][] .= sprintf("<b>Imported {$imported} posts and {$comments} comments in %.2f seconds.</b>", $exec_time);
-        $this->print_messages();
-    }
-
-    function create_post($data, $options) {
-        extract($options);
-        $data = array_merge($this->defaults, $data);
-        $type = $data['csv_post_type'] ? $data['csv_post_type'] : 'post';
-        $valid_type = (function_exists('post_type_exists') &&
-            post_type_exists($type)) || in_array($type, array('post', 'page'));
-
-        if (!$valid_type) {
-            $this->log['error']["type-{$type}"] = sprintf(
-                'Unknown post type "%s".', $type);
-        }
-
-        $new_post = array(
-            'post_title'   => convert_chars($data['first_name_1'].' '.$data['last_name_1'].' '.$data['zip']),
-            'post_content' => wpautop(convert_chars($data['csv_post_post'])),
-            'post_status'  => $opt_draft,
-            'post_type'    => $type,
-            'post_date'    => $this->parse_date($data['csv_post_date']),
-            'post_excerpt' => convert_chars($data['csv_post_excerpt']),
-            'post_name'    => $data['csv_post_slug'],
-            'post_author'  => $this->get_auth_id($data['csv_post_author']),
-            'tax_input'    => $this->get_taxonomies($data),
-            'post_parent'  => $data['csv_post_parent'],
-            'territory_manager'  => $data['territory_manager'],
-        );
-
-        // pages don't have tags or categories
-        if ('page' !== $type) {
-            $new_post['tags_input'] = $data['csv_post_tags'];
-
-            // Setup categories before inserting - this should make insertion
-            // faster, but I don't exactly remember why :) Most likely because
-            // we don't assign default cat to post when csv_post_categories
-            // is not empty.
-            $cats = $this->create_or_get_categories($data, $opt_cat);
-            $new_post['post_category'] = $cats['post'];
-        }
-        // code added to check if post exists, so we'll update it
-        $ifpost = get_page_by_title( convert_chars($data['first_name_1'].' '.$data['last_name_1'].' '.$data['zip']),'OBJECT', 'post' );
-
-        
-        if (isset($ifpost)) {
-          $new_post['ID'] = $ifpost->ID;
-          $id = wp_update_post( $new_post );
-          $id = $id ? $id : $ifpost->ID;
-          $updated++;
-        } else {
-        // create! (here the previous existing code to insert it if not exists)
-          $id = wp_insert_post($new_post);
-        }
-        if ('page' !== $type && !$id) {
-          // cleanup new categories on failure
-          foreach ($cats['cleanup'] as $c) {
-            wp_delete_term($c, 'category');
+      /*------*/
+    
+      foreach ($csv->connect() as $csv_data) {
+          if ($post_id = $this->create_post($csv_data, $options)) {
+              $comments += $this->add_comments($post_id, $csv_data);
+              $this->create_custom_fields($post_id, $csv_data);
+          } else {
+              $skipped++;
           }
+      }
+
+      if (file_exists($file)) {
+          @unlink($file);
+      }
+      $total_proc = $imported + $updated;
+      $exec_time = microtime(true) - $time_start;
+
+      $this->log['notice'][] .= sprintf("<b>Processed {$total_proc} posts in %.2f seconds.</b>", $exec_time);
+
+      if ($skipped) {
+          $this->log['notice'][] = "<b>Skipped {$skipped} posts (most likely due to empty title, body and excerpt).</b>";
+      }
+      if ($updated) {
+          $this->log['notice'][] = "<b>Updated {$updated} posts.</b>";
+      }
+      if ($imported) {
+          $this->log['notice'][] = "<b>Imported {$imported} posts.</b>";
+      }
+      $this->print_messages();
+  }
+
+  function create_post($data, $options) {
+      global $updated, $imported;
+      extract($options);
+      $data = array_merge($this->defaults, $data);
+      $type = $data['csv_post_type'] ? $data['csv_post_type'] : 'post';
+      $valid_type = (function_exists('post_type_exists') &&
+          post_type_exists($type)) || in_array($type, array('post', 'page'));
+
+      if (!$valid_type) {
+          $this->log['error']["type-{$type}"] = sprintf(
+              'Unknown post type "%s".', $type);
+      }
+
+      $new_post = array(
+          'post_title'   => convert_chars($data['first_name_1'].' '.$data['last_name_1'].' '.$data['zip']),
+          'post_content' => wpautop(convert_chars($data['csv_post_post'])),
+          'post_status'  => $opt_draft,
+          'post_type'    => $type,
+          'post_date'    => $this->parse_date($data['csv_post_date']),
+          'post_excerpt' => convert_chars($data['csv_post_excerpt']),
+          'post_name'    => $data['csv_post_slug'],
+          'post_author'  => $this->get_auth_id($data['csv_post_author']),
+          'tax_input'    => $this->get_taxonomies($data),
+          'post_parent'  => $data['csv_post_parent'],
+          'territory_manager'  => $data['territory_manager'],
+      );
+
+      // pages don't have tags or categories
+      if ('page' !== $type) {
+          $new_post['tags_input'] = $data['csv_post_tags'];
+
+          // Setup categories before inserting - this should make insertion
+          // faster, but I don't exactly remember why :) Most likely because
+          // we don't assign default cat to post when csv_post_categories
+          // is not empty.
+          $cats = $this->create_or_get_categories($data, $opt_cat);
+          $new_post['post_category'] = $cats['post'];
+      }
+      // code added to check if post exists, so we'll update it
+      $ifpost = get_page_by_title( convert_chars($data['first_name_1'].' '.$data['last_name_1'].' '.$data['zip']),'OBJECT', 'post' );
+      if (isset($ifpost)) {
+        $new_post['ID'] = $ifpost->ID;
+        $id = wp_update_post( $new_post );
+        $id = $id ? $id : $ifpost->ID;
+        $updated++;
+      } else {
+      // create! (here the previous existing code to insert it if not exists)
+        $id = wp_insert_post($new_post);
+        $imported++;
+      }
+      if ('page' !== $type && !$id) {
+        // cleanup new categories on failure
+        foreach ($cats['cleanup'] as $c) {
+          wp_delete_term($c, 'category');
         }
-       return $id;
-    }
+      }
+     return $id;
+  }
 
     /**
      * Return an array of category ids for a post.
@@ -565,13 +568,13 @@ class CSVImporterPlugin {
       foreach ($data as $k => $v) {
         // anything that doesn't start with csv_ is a custom field
         if (!preg_match('/^csv_/', $k) && $v != '') {
-          add_post_meta($post_id, $k, $v);
+          update_post_meta($post_id, $k, $v);
           if ($k=='address' || $k=='state' || $k=='city' || $k=='zip' ) {
             $aline.=$v.' ';
           }
         }
       }
-      add_post_meta($post_id, 'address_line', $aline);
+      update_post_meta($post_id, 'address_line', $aline);
     }
 
     function get_auth_id($author) {
