@@ -276,3 +276,14 @@ add_action( 'admin_menu', 'my_remove_meta_boxes' );
 add_action ('new_to_publish','nuevo_manda_email');
 add_action ('draft_to_publish','nuevo_manda_email');
 
+
+function array_sort_bycolumn(&$array,$column,$dir = 'asc') {
+  foreach($array as $a) $sortcol[$a[$column]][] = $a;
+  ksort($sortcol);
+  foreach($sortcol as $col) {
+   foreach($col as $row) $newarr[] = $row;
+  }
+  if($dir=='desc') $array = array_reverse($newarr);
+  else $array = $newarr;
+}
+
