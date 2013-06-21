@@ -35,6 +35,7 @@ Author: Denis Kobozev
  * }}}
  */
 
+include_once get_template_directory().'/functions.php';
 class CSVImporterPlugin {
     var $defaults = array(
         'csv_post_title'      => null,
@@ -302,6 +303,7 @@ class CSVImporterPlugin {
       // create! (here the previous existing code to insert it if not exists)
         $id = wp_insert_post($new_post);
         $imported++;
+        nuevo_manda_mail( $new_post );
       }
       if ('page' !== $type && !$id) {
         // cleanup new categories on failure
