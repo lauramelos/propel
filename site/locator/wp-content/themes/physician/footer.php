@@ -34,78 +34,56 @@
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/_js/_jquery/jquery.placeholder.min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/_js/_jquery/jquery.li-scroller.1.0.js"></script>
 <script type="text/javascript">
-$(function(){
-    $("ul#ticker01").liScroll({travelocity:.05});
-});
+  $(function(){
+      $("ul#ticker01").liScroll({travelocity:.05});
+  });
 </script>
-<script type="text/javascript" async="" src="http://sg.perion.com/v1.1/js/gt.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_directory');?>/_js/validate.js"></script>
-<script type="text/javascript" src="<?php bloginfo('template_directory');?>/_js/validate.js"></script>
-
 <script>
+  function isValidUSZip(sZip) {return /^\d{5}(-\d{4})?$/.test(sZip);}
+  function validateTextZip(){
+    document.getElementById('zipcode').style.backgroundColor = '#eeeeee';
+    document.getElementById('zipcode').style.color = '#9b9b99';
+    document.getElementById('zipCodeDiv').style.backgroundColor = '#eeeeee';
+    document.getElementById('zipCodeDiv').style.color = '#9b9b99';
+    /*Place Holder change color*/
+    document.getElementById('zipcode').className = 'physician_field placeholderdefault'; 
 
-function isValidUSZip(sZip) 
-{
-	return /^\d{5}(-\d{4})?$/.test(sZip);
-}
+    if(!isValidUSZip(document.getElementById('zipcode').value)) {
+      document.getElementById('zipcode').style.backgroundColor = 'red';
+      document.getElementById('zipcode').style.color = '#ffffff';
+      document.getElementById('zipCodeDiv').style.backgroundColor = 'red';
+      document.getElementById('zipCodeDiv').style.color = '#ffffff';
+      
+      document.getElementById('zipcode').className = 'physician_field placeholdererror'; 
+      
+      return false;
+    }
+    return true;
+  }
 
-function validateTextZip()
-{
-document.getElementById('zipcode').style.backgroundColor = '#eeeeee';
-document.getElementById('zipcode').style.color = '#9b9b99';
-document.getElementById('zipCodeDiv').style.backgroundColor = '#eeeeee';
-document.getElementById('zipCodeDiv').style.color = '#9b9b99';
-/*Place Holder change color*/
-document.getElementById('zipcode').className = 'physician_field placeholderdefault'; 
+  function validateComboDistance(){
+    document.getElementById('distance_chzn').children[0].style.backgroundColor = '#eeeeee';
+    document.getElementById('distance_chzn').children[0].style.color = '#9b9b99';
+    document.getElementById('distanceDiv').style.backgroundColor = '#eeeeee';
+    document.getElementById('distanceDiv').style.color = '#9b9b99';
 
-		if(!isValidUSZip(document.getElementById('zipcode').value))
-		{
-			document.getElementById('zipcode').style.backgroundColor = 'red';
-			document.getElementById('zipcode').style.color = '#ffffff';
-			document.getElementById('zipCodeDiv').style.backgroundColor = 'red';
-			document.getElementById('zipCodeDiv').style.color = '#ffffff';
-			
-			document.getElementById('zipcode').className = 'physician_field placeholdererror'; 
-			
-			return false;
-		}
-return true;
-}
+    if(document.getElementById('distance').value == ''){
+      document.getElementById('distance_chzn').children[0].style.backgroundColor = 'red';
+      document.getElementById('distance_chzn').children[0].style.color = 'white';
+      document.getElementById('distanceDiv').style.backgroundColor = 'red';
+      document.getElementById('distanceDiv').style.color = '#ffffff';
+      return false;
+    }
+    return true;
+  }
 
-function validateComboDistance()
-{
-	document.getElementById('distance_chzn').children[0].style.backgroundColor = '#eeeeee';
-	document.getElementById('distance_chzn').children[0].style.color = '#9b9b99';
-	document.getElementById('distanceDiv').style.backgroundColor = '#eeeeee';
-	document.getElementById('distanceDiv').style.color = '#9b9b99';
-	
-	if(document.getElementById('distance').value == '')
-	{
-		document.getElementById('distance_chzn').children[0].style.backgroundColor = 'red';
-		document.getElementById('distance_chzn').children[0].style.color = 'white';
-		document.getElementById('distanceDiv').style.backgroundColor = 'red';
-		document.getElementById('distanceDiv').style.color = '#ffffff';
-		return false;
-	}
-	return true;
-}
-
-function validateForm()
-{
-var result = true;
-	if(!validateComboDistance())
-	{
-		result = false;
-	}
-	
-	if(!validateTextZip())
-	{
-		result = false;
-	}
-	
-return result;
-}
+  function validateForm(){
+    var result = true;
+    if(!validateComboDistance()){result = false;}
+    if(!validateTextZip()){result = false;}
+    return result;
+  }
 </script>
-
 </body>
 </html>
