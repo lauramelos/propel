@@ -249,6 +249,7 @@ class CSVImporterPlugin {
     }
 
     function create_post($data, $options) {
+        global $updated, $inserted;
         extract($options);
         $data = array_merge($this->defaults, $data);
         $type = $data['csv_post_type'] ? $data['csv_post_type'] : 'post';
