@@ -334,12 +334,8 @@
                        <option value="250" <?php if($_GET['distance']=='250' || $_POST['distancenf']=='250'){ echo "selected"; } ?>>250 miles</option> 
                      </select>
                    </div>
-                   <p style="margin-top:10px; margin-left:2px;">
-                     <input type="checkbox" name="chagree" id="chagree" value="1" onchange="agree_submit()">
-                     <label for="chagree"></label>&nbsp;I agree to the <a href='#'>Terms and Conditions of Use</a>
-                   </p>
                    <p id="sub_agree" style="margin-top:10px;">
-                     <input type="submit" name="submitnf" id="submitnf" class="signup_not" value=" " disabled >
+                     <input type="submit" name="submitnf" id="submitnf" class="signup" value=" ">
                    </p>
                    <script src="http://67.222.18.91/~propel/locator/wp-content/themes/physician/chosen/chosen.jquery.js" type="text/javascript"></script>
                    <script type="text/javascript"> 
@@ -495,9 +491,6 @@ function pbd_vc_init() { ?>
           }, 
           distancenf: {
             required: true
-          },
-          chagree: {
-            required: true
           }
         },
         messages: {
@@ -505,7 +498,6 @@ function pbd_vc_init() { ?>
           emailnf: "Please enter a correct e-mail.",
           zipnf: "Please enter a valid Zipcode.",
           distancenf: "Please select a Distance.",
-          chagree: "You have to agree to the Terms and Conditions of Use."
         }
       });
     });
