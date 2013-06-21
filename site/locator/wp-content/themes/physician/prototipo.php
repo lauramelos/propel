@@ -274,7 +274,13 @@
                 </div>
               <?php endforeach;?>
               <?php if (count($encontrados)>0){ ?>
-                <script>$('#ctotal').html('<p class="hay">There are <span><?=$query->found_posts?></span> offices within <span><?=$_GET['distance']?> miles</span> from zip code <span><?=$_GET['zipcode']?></span>.</p>');</script>
+                <script>
+                jQuery(function($){                        
+                  $(document).ready(function() {
+                    $('#ctotal').html('<p class="hay">There are <span><?=$query->found_posts?></span> offices within <span><?=$_GET['distance']?> miles</span> from zip code <span><?=$_GET['zipcode']?></span>.</p>');
+                  });
+                });
+                </script>
               <?php }
               if (false && $query->found_posts > $perpage) {
                 if ( function_exists('wp_pagenavi') ) {
@@ -295,8 +301,12 @@
         <?php endif; ?>
         <?php if ( (count($founds_zips)>0 && $bant == 0) ||  count($coordes)== 0) :?>
           <div style="width:770px; margin-right:auto; margin-left:auto;">
-            <script>$('#ctotal').html('<p class="nohay">There are no results within <span>
-              <?=$_GET['distance']?> miles</span> from zip code <span><?=$_GET['zipcode']?></span>.</p>');
+            <script>
+            jQuery(function($){                        
+              $(document).ready(function() {
+                $('#ctotal').html('<p class="nohay">There are no results within <span><?=$_GET['distance']?> miles</span> from zip code <span><?=$_GET['zipcode']?></span>.</p>');
+              });
+            });
             </script>
             <p style="display:block; margin-top:10px; margin-bottom:40px; font-size:16px; line-height:24px;">
               Please widen your search distance, or fill out the form below to sign
