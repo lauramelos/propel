@@ -258,7 +258,7 @@
                             if (stripos($p['website'], 'http://') === false) 
                               $lws='http://'.$p['website']; else $lws=$p['website']; ?>
                               Website: <span style="display:inline; color:#fcac00">
-                              <a href="<?=$lws?>" target="_blank"><?php the_field('website'); ?>
+                              <a href="<?=$lws?>" target="_blank"><?=$p['website'] ?>
                               </a></span>
                           <?php } ?>
                         </span>
