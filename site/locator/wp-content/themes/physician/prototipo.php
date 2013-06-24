@@ -123,8 +123,10 @@
           <script src='http://maps.googleapis.com/maps/api/js?sensor=false' type='text/javascript'></script>
           <script type="text/javascript">
           //<![CDATA[
+
               function get_map(lat, lng, ide, address){
-                 document.getElementById("map_" + ide).innerHTML="<a href='http://maps.google.com/?ll=" + lat + "," + lng +  "&z=16&q=" + address + "' target='_blank'><img src='http://maps.google.com/maps/api/staticmap?center=" + address +  "&zoom=16&size=335x119&sensor=false&markers=icon:http://67.222.18.91/~propel/_img/content/map-marker.png|" + lat + "," + lng +  "' /></a>";	
+                 document.getElementById("map_" + ide).innerHTML="<a href='http://maps.google.com/?ll=" + lat + "," + lng +  "&z=16&q=" + address + "' target='_blank'><img src='http://maps.google.com/maps/api/staticmap?center=" + address +  "&zoom=16&size=335x119&sensor=false&markers=icon:http://67.222.18.91/~propel/_img/content/map-marker.png|" + lat + "," + lng +  "&key=AIzaSyDbP41zv93oawIrM3HSjH-u480d84ATz1s' /></a>";
+
                };
 
                function locateByAddress( address , ide){
@@ -133,7 +135,12 @@
                    if(status == google.maps.GeocoderStatus.OK){
                      coordinates = results[0].geometry.location.lat()+','+results[0].geometry.location.lng();
                      get_map(results[0].geometry.location.lat(),results[0].geometry.location.lng(),ide,address);
-                   }
+                   } else if(status == "OVER_QUERY_LIMIT"){
+                     var sto = setTimeout(function(){
+                       locateByAddress( address , ide);
+                     },100);
+                   };
+
                  });
                }
           //]]>
@@ -264,10 +271,16 @@
                         </span>
                       </div>
                       <?php 
-                      if ($p['coordinates']<>'' && strlen($p['coordinates'])){ ?>
-                        <script>get_map('<?php echo $p['lat']; ?>','<?php echo $p['lng']; ?>',<?=$p['ID'] ?>,'<?=$p['directions'] ?>');</script>
+                      if ($p['coordinates']<>'' && strlen($p['coordinates']) > 1 ){ ?>
+                        <script>get_map('<?=$p['lat']; ?>','<?=$p['lng']; ?>',<?=$p['ID'] ?>,'<?=$p['directions'] ?>');</script>
                       <?php } else { ?>
-                        <script>locateByAddress('<?=$p['directions'] ?>', <?=$p['ID'] ?>);</script>
+                        <script>
+                          jQuery(function($){
+                            $(document).ready(function() {
+                              locateByAddress('<?=$p['directions'] ?>', <?=$p['ID'] ?>);
+                            });
+                          });
+                        </script>
                       <?php } ?>
                     </div>
                   </div>
