@@ -34,7 +34,7 @@ Author: Denis Kobozev
  * @license   The MIT License
  * }}}
  */
-
+set_time_limit(0);
 class CSVImporterPlugin {
     var $defaults = array(
         'csv_post_title'      => null,
@@ -231,7 +231,8 @@ class CSVImporterPlugin {
               $this->create_custom_fields($post_id, $csv_data);
               if ($new_physician > 0 ) {
                 //print_r('send new mail, id: '.$post_id.'<br />');
-                send_new_mail($post_id);
+                send_email($post_id);
+                add_post_meta($post_id, 'mystatus', 'sended', true);
                 $new_physician = 0;
               }
           } else {
@@ -646,7 +647,7 @@ function csv_admin_menu() {
 }
 
 add_action('admin_menu', 'csv_admin_menu');
-
+/*
 function send_new_mail( $post ) {
   //echo $post;
   $post_id = $post;
@@ -809,6 +810,8 @@ function send_new_mail( $post ) {
          //aca hay que agregar uno al campo count
          $yaenvio= $wpdb->query("update datauserword set count = count + 1  where Email='".$emails_T[$a]."' AND Zip = ".$zip_S[$a]);
         }
+      {
+         
       }
-}
+}*/
 ?>

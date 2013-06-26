@@ -106,7 +106,7 @@
           foreach ($coordes as $coords) 
             $bans = $wpdb->insert( 'searching', 
                     array('date_s' => date("Y-m-d"), 
-                          'zipcode' => 	$_GET['zipcode'], 
+                          'zipcode' => $_GET['zipcode'], 
                           'distance' => $_GET['distance'], 
                           'Lat' => $coords->Lat, 
                           'Lon' => $coords->Lon), 
@@ -239,10 +239,9 @@
                       </div>
                       <div class="names">
                         <?php for ($i=1;$i<6;$i++) { 
-                          if ($p['others'][$i]['first_name'] <> '') { ?>
-                            <span><!--Physician:--><strong><?=$p['others'][$i]['first_name'] ?>
-                              &nbsp;<?=$p['others'][$i]['last_name'] ?>,
-                              &nbsp;<?=$p['others'][$i]['designation'] ?>
+                          if ($p['others'][$i]['first_name'] <> '' && $p['others'][$i]['first_name'] <> ' ' ) { ?>
+                            <span><!--Physician:--><strong>
+                              <?=$p['others'][$i]['first_name'] ?>&nbsp;<?=$p['others'][$i]['last_name'] ?>,&nbsp;<?=$p['others'][$i]['designation'] ?>
                             </strong></span>
                         <?php } } ?>
                       </div>
@@ -251,7 +250,7 @@
                       <?php endif; ?>
                       <span><!--Address:--><?=$p['address']; ?>
                         <?php if(!empty($p['suite'])) { echo '<br>' . $p['suite']; } ?>
-                        <br><?=$p['city'] ?>,&nbsp;<?=$p['state']?>&nbsp;<?=$p['zip'] ?>
+                        <br><?=$p['city'] ?>,&nbsp;<?=$p['state']?>&nbsp;<?php while (strlen($p['zip'])<5) $p['zip']='0'.$p['zip']; echo $p['zip']; ?>
                       </span>
                       <!--<iframe width="335" height="119" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.googleapis.com/maps/api/staticmap?center=<?php //echo the_field('address_line'); ?>"></iframe>-->
                       <div style="margin-top:20px; margin-bottom:18px;">

@@ -1,3 +1,4 @@
+<?php header("Location: http://67.222.18.91/~propel/locator/find-propel-physician/"); ?>
 <?php get_header(); ?>
 
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
