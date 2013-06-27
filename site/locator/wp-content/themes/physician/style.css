@@ -739,10 +739,12 @@ ul#home-bottom-box li .item a.thumb-video .overlay-on { background: url('_img/co
 	float:left;
 	display:block;
 	}
-	.searchbutton:hover{
-		background-position:-105px 0px;
-		cursor:pointer;
-		}
+.searchbutton:focus,
+.searchbutton:hover{
+  background-position:-105px 0px;
+  cursor:pointer;
+  outline:none
+}
 .searchanalityc{
 	background:url(_img/searchbuttons.png) no-repeat;
 	width:105px;

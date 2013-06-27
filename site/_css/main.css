@@ -496,8 +496,10 @@ ul#contact li.email {background: url('../_img/content/contact.png') 0 -56px no-r
 	width:180px; height:39px; border:none; color:transparent;
 	font-size:0; 
 }
+#locator input[type=submit]:focus,
 #locator input[type=submit]:hover {
 	background-position: 0 -40px;
+  outline: 0;
 }
 
 #locator div.physician_field {

@@ -67,6 +67,7 @@
   background: url('chosen-sprite.png') -42px 1px no-repeat;
 
 }
+
 .chzn-container-single .chzn-single abbr:hover {
   background-position: -42px -10px;
 }
@@ -317,12 +318,14 @@
   border-left: none;
 }
 /*----hover de la flecha----*/
+.chzn-container-active .chzn-single div b,
 .chzn-container-single .chzn-single div b:hover {
 	background-position: 261px -58px;
 	}
 .chzn-container-active.chzn-with-drop .chzn-single div b {
-  background-position: 261px -116px;
+  background-position: 261px -58px;
 }
+.chzn-container-active.chzn-with-drop .chzn-single div b:focus,
 .chzn-container-active.chzn-with-drop .chzn-single div b:hover {
   background-position: 261px -172px;
 }
