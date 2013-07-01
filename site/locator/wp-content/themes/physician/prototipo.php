@@ -3,7 +3,9 @@
 /*Template Name: FIND-PROPEL*/
 
 ?>
-<?php get_header(); ?>
+<?php get_header();
+ $url= network_site_url();
+?>
 <!-- inner-content START -->
 <div id="inner-content">
   <!-- header-strip START -->
@@ -34,7 +36,7 @@
             </select>
           </div>
           <input type="submit" name="submit" id="submit" class="searchbutton" value=" "> 
-          <script src="http://67.222.18.91/~propel/locator/wp-content/themes/physician/chosen/chosen.jquery.js" type="text/javascript"></script>
+<script src="<?php echo $url ?>/wp-content/themes/physician/chosen/chosen.jquery.js" type="text/javascript"></script>
           <script type="text/javascript"> 
             var config = {
               '.chzn-select'           : {},
@@ -125,7 +127,7 @@
           //<![CDATA[
 
               function get_map(lat, lng, ide, address){
-                 document.getElementById("map_" + ide).innerHTML="<a href='http://maps.google.com/?ll=" + lat + "," + lng +  "&z=16&q=" + address + "' target='_blank'><img src='http://maps.google.com/maps/api/staticmap?center=" + address +  "&zoom=16&size=335x119&sensor=false&markers=icon:http://67.222.18.91/~propel/_img/content/map-marker.png|" + lat + "," + lng +  "&key=AIzaSyDbP41zv93oawIrM3HSjH-u480d84ATz1s' /></a>";
+                 document.getElementById("map_" + ide).innerHTML="<a href='http://maps.google.com/?ll=" + lat + "," + lng +  "&z=15&q=" + address + "' target='_blank'><img src='http://maps.google.com/maps/api/staticmap?center=" + address +  "&zoom=15&size=335x119&sensor=false&markers=icon:http://67.222.18.91/~propel/_img/content/map-marker.png|" + lat + "," + lng +  "&key=AIzaSyDbP41zv93oawIrM3HSjH-u480d84ATz1s' /></a>";
 
                };
 
@@ -349,7 +351,7 @@
                    <p id="sub_agree" style="margin-top:10px;">
                      <input type="submit" name="submitnf" id="submitnf" class="signup" value=" ">
                    </p>
-                   <script src="http://67.222.18.91/~propel/locator/wp-content/themes/physician/chosen/chosen.jquery.js" type="text/javascript"></script>
+          <script src="<?php echo $url ?>/wp-content/themes/physician/chosen/chosen.jquery.js" type="text/javascript"></script>
                    <script type="text/javascript"> 
                      var config = {
                        '.chzn-select'           : {},
@@ -390,13 +392,13 @@
   <div style="background-color:#fff;height:320px;width:400px;color:#989794;font-family:Arial;font-size:15px;line-height:19px;">
   <p id="physicianInstructions" style="padding:30px 50px 17px 50px;">Please fill in your zip code and select a distance to find a physician nearest to you.</p>
   <div id="locatorWrapper" style="padding:0px 50px 45px 50px;">
-    <form method="get" action="http://67.222.18.91/~propel/locator/find-propel-physician/" onsubmit="return validateForm()" id="locator">
+  <form method="get" action="<?php echo $url ?>/find-propel-physician/" onsubmit="return validateForm()" id="locator">
       <div style="float:left;"> 
         <div class="physician_field" id="zipCodeDiv" style="margin-bottom:7px!important;">
           <input type="text" name="zipcode" id="zipcode" style="padding-left:10px; font-size:18px;" class="physician_field"  placeholder="Zip code*" onchange="validateTextZip()">
         </div>
         <div class="physician_field" id="distanceDiv">
-          <select name="distance" id="distance" class="physician_field chzn-select-no-single" tabindex="5" onchange="validateComboDistance()">
+          <select name="distance" id="distance" class="physician_field chzn-select-no-single" onchange="validateComboDistance()">
             <option value="" disabled="" selected="" style="display:none;">Distance*</option>
             <option value="25">25 miles</option>
             <option value="50">50 miles</option>
