@@ -19,7 +19,7 @@ function wp_addreport_options() {
  
  
  ?>
- <link rel='stylesheet' id='colors-css'  href='http://67.222.18.91/~propel/locator/wp-admin/css/colors-fresh.min.css?ver=3.5.1' type='text/css' media='all' />
+ <link rel='stylesheet' id='colors-css'  href='http://propelopens.com/locator/wp-admin/css/colors-fresh.min.css?ver=3.5.1' type='text/css' media='all' />
  <p>&nbsp;</p>
  <H1>Email Notification Subscribers</H1>
  <form action="" method="post">
@@ -72,7 +72,7 @@ foreach ($res_emails as $sigema){
 }
 
 function wp_addreport() {
-  add_menu_page('Email Notification Subscribers', 'Email Notification Subscribers', 'manage_options', 'wp_addreport', 'wp_addreport_options','http://67.222.18.91/~propel/_img/content/doctor.png' );
+  add_menu_page('Email Notification Subscribers', 'Email Notification Subscribers', 'manage_options', 'wp_addreport', 'wp_addreport_options','http://propelopens.com/_img/content/doctor.png' );
   //add_options_page( 'Report Signed Emails', 'Report Signed Emails', 'manage_options', 'wp_addreport', 'wp_addreport_options' );
 }
 add_action( 'admin_menu', 'wp_addreport' );

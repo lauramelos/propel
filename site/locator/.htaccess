@@ -1,1 +1,1 @@
-RedirectMatch 301 ^/~propel/locator/$ http://67.222.18.91/~propel/locator/find-propel-physician
+RedirectMatch 301 ^/locator/$ http://propelopens.com/locator/find-propel-physician

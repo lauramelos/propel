@@ -127,7 +127,7 @@
           //<![CDATA[
 
               function get_map(lat, lng, ide, address){
-                 document.getElementById("map_" + ide).innerHTML="<a href='http://maps.google.com/?ll=" + lat + "," + lng +  "&z=15&q=" + address + "' target='_blank'><img src='http://maps.google.com/maps/api/staticmap?center=" + address +  "&zoom=15&size=335x119&sensor=false&markers=icon:http://67.222.18.91/~propel/_img/content/map-marker.png|" + lat + "," + lng +  "&key=AIzaSyDbP41zv93oawIrM3HSjH-u480d84ATz1s' /></a>";
+                 document.getElementById("map_" + ide).innerHTML="<a href='http://maps.google.com/?ll=" + lat + "," + lng +  "&z=15&q=" + address + "' target='_blank'><img src='http://maps.google.com/maps/api/staticmap?center=" + address +  "&zoom=15&size=335x119&sensor=false&markers=icon:http://propelopens.com/_img/content/map-marker.png|" + lat + "," + lng +  "&key=AIzaSyDbP41zv93oawIrM3HSjH-u480d84ATz1s' /></a>";
 
                };
 
@@ -411,7 +411,7 @@
         <input id="physicianSubmit" name="submit" type="submit" style="display:block;width:180px;" /> 
         <span style="float:left; margin-top:45px; display:block; margin-bottom:20px;"><i>* Required fields</i></span>
       </div>
-      <script src="http://67.222.18.91/~propel/chosen/chosen.jquery.js" type="text/javascript"></script>
+      <script src="http://propelopens.com/chosen/chosen.jquery.js" type="text/javascript"></script>
       <script type="text/javascript"> 
         var config = {
           '.chzn-select'           : {},

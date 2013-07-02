@@ -5,6 +5,31 @@ Template Name: analitycs
 ?>
 <?php get_header(); ?>
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_js/jQRangeSlider-5.1.1/css/classic.css" type="text/css" />
+<style>
+#showPhy{
+padding: 3px 7px;
+border: 1px solid rgb(140, 140, 140);
+font-size: 11px;
+text-transform: uppercase;
+background-color: rgb(200, 200, 200);
+color: rgb(25, 25, 25);
+position: absolute;
+right: 50px;
+top: 356px;
+}
+#showPhy.enable{
+padding: 3px 7px;
+border: 1px solid rgb(140, 140, 140);
+font-size: 11px;
+text-transform: uppercase;
+background-color: rgb(255, 173, 0);
+color: rgb(255, 255, 255);
+position: absolute;
+right: 50px;
+top: 356px;
+cursor: pointer;
+}
+</style>
 <script src="<?php bloginfo('template_directory'); ?>/_js/jQRangeSlider-5.1.1/lib/jquery-1.7.1.min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/_js/jQRangeSlider-5.1.1/lib/jquery-ui-1.8.16.custom.min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/_js/jQRangeSlider-5.1.1/jQDateRangeSlider-min.js"></script>
@@ -81,13 +106,16 @@ Template Name: analitycs
   }
 
   function locateByAddress( address, ide, pname){
-    console.log('ide', ide);
+    //console.log('ide', ide);
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({'address':address},function(results,status){
       if(status == google.maps.GeocoderStatus.OK){
         var coordina=[pname,results[0].geometry.location.lat(),results[0].geometry.location.lng()];	
         markersP[ide]=coordina;
+	if(countphy == markersP.length) $('#showPhy').addClass('enable');
+	else $('#showPhy').removeClass('enable');	
       } else if(status == "OVER_QUERY_LIMIT"){
+	$('#showPhy').removeClass('enable');
         var sto = setTimeout(function(){
           locateByAddress( address, ide, pname );
         },100);
@@ -101,7 +129,7 @@ Template Name: analitycs
       if (markersP[i]) {
         window["marker" + i ] = new google.maps.Marker({
           position: new google.maps.LatLng(markersP[i][1], markersP[i][2]),
-          icon:'http://67.222.18.91/~propel/_img/content/map-marker2.png',
+          icon:'http://propelopens.com/_img/content/map-marker2.png',
           map: map
         });
         google.maps.event.addListener(window["marker" + i ] , 'click', (function(marker, i) {
@@ -115,11 +143,11 @@ Template Name: analitycs
   }
 
   function show_me() {
-    if ($('#showPhy').html()=='Show Physicians'){
+    if ($('#showPhy').html()=='Show Physicians' && countphy == markersP.length ){
       $('#showPhy').html('Hide Physicians');
       $('#showPhy').css("background-color","#ffad00");
       marca_phy();
-    } else {
+    } else if ($('#showPhy').html()=='Hide Physicians') {
       $('#showPhy').html('Show Physicians');
       $('#showPhy').css("background-color","#578155");
       for (i = 0; i < markersP.length; i++) {
@@ -140,11 +168,7 @@ Template Name: analitycs
         </div>
         <div id="map_canvas" style="width: 882px; height: 500px; "></div>
         <?php if ( !empty($_GET['submitsz']) ) { ?>
-        <div id="showPhy" onclick="show_me()" style="padding-left:7px;
-padding-right:7px; padding-top:3px; padding-bottom:3px;
-border:1px solid #8c8c8c;font-size:11px;
-text-transform:uppercase;background-color:#578155;
-color:#FFF; position:absolute; right:50px; top:356px; cursor:pointer;">Show Physicians</div>  
+        <div id="showPhy" onclick="show_me()" >Show Physicians</div>  
       <?
       $url= get_permalink().'?date_from='.$_GET['date_from'].'&date_to='.$_GET['date_to'].'&submitsz=+';
       $registros = 20; // Número de ítems por página.
@@ -153,7 +177,14 @@ color:#FFF; position:absolute; right:50px; top:356px; cursor:pointer;">Show Phys
       $query= null;
       $query = new WP_Query(array('posts_per_page' => -1));
       $phy_i=0;
-        while ($query->have_posts()) : $query->the_post(); 
+	/*echo '<pre>';
+	print_r($query);
+	echo '</pre>';*/
+      $countp = $query->found_posts;
+      ?>
+	<script> var countphy = <?=$countp ?> </script>
+      <?php
+      while ($query->have_posts()) : $query->the_post(); 
         $cname='';
         for ($i=1;$i<6;$i++) { 
           if (trim(get_field('first_name_'.$i)) <> '') 
@@ -162,33 +193,24 @@ color:#FFF; position:absolute; right:50px; top:356px; cursor:pointer;">Show Phys
         
         $location = get_field('address_line'  );
         
-          if ($location['coordinates']<>'' && strlen($location['coordinates'])>1){
+        if ($location['coordinates']<>'' && strlen($location['coordinates'])>1){
           $temp = explode(','  , $location['coordinates' ]);
           $lat = (float) $temp[0];
           $lng = (float) $temp[1];
-          }
+        }
           
-          if (strlen($location['address'])>1)
+        if (strlen($location['address'])>1)
           $direc=$location['address' ];
-          else
-          $direc=$location;
-        
-          if ($location['coordinates']<>'' && strlen($location['coordinates'])>1){
-          ?>
+        else
+          $direc=$location; ?>
           <script>
+        <?php if ($location['coordinates']<>'' && strlen($location['coordinates'])>1){ ?>
           var coordina=['<?=$cname?>',<?=$lat?>,<?=$lng?>];	
           markersP[<?= $phy_i ?>]=coordina;
-          </script>
-          <? 
-          }else{ 
-            ?><script>
-           jQuery(function($){
-             $(document).ready(function() {
+        <?php } else { ?>
                locateByAddress('<?= $direc; ?>',<?= $phy_i ?>,'<?= $cname ?>');
-             });
-           });
-          </script><?
-          }
+        <?php } ?>
+         </script> <?php
         $phy_i=$phy_i+1;
         endwhile;
       

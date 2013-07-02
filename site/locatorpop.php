@@ -1,4 +1,4 @@
-<form method="get" action="http://67.222.18.91/~propel/locator/find-propel-physician/" id="locator" >
+<form method="get" action="http://propelopens.com/locator/find-propel-physician/" id="locator" >
 <div style="float:left;"><div class="physician_field" id="emailDiv"><input type="text" name="zipcode" id="zipcode" class="physician_field" style="color:#949590;" placeholder="Zip code*"></div><div class="physician_field" id="zipDiv">
 <select name="distance" id="distance" class="physician_field chzn-select-no-single" tabindex="5">
 <option value="" disabled="" selected="" style="display:none;">Distance*</option>

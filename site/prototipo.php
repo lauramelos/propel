@@ -52,7 +52,7 @@
 	//draw a map
 	var map = new google.maps.Map(document.getElementById("map_" + ide), myOptions);
 	var Cimage = new google.maps.MarkerImage(
-    	'http://67.222.18.91/~propel/_img/content/map-marker.png',
+    	'http://propelopens.com/_img/content/map-marker.png',
     	new google.maps.Size(38,53),    // size of the image
     	new google.maps.Point(0,0), // origin, in this case top-left corner
     	new google.maps.Point(9, 25)    // anchor, i.e. the point half-way along the bottom of the image
@@ -98,7 +98,7 @@
 	
 
 
-       <script src="http://67.222.18.91/~propel/locator/wp-content/themes/physician/chosen/chosen.jquery.js" type="text/javascript"></script>
+       <script src="http://propelopens.com/locator/wp-content/themes/physician/chosen/chosen.jquery.js" type="text/javascript"></script>
   <script type="text/javascript"> 
     var config = {
       '.chzn-select'           : {},
@@ -274,7 +274,7 @@ $coordes= $wpdb->get_results("select Lon, Lat from zipcodes where Zipcode='{$_GE
 				
 				<p id="sub_agree" style="margin-top:10px;"><input type="submit" name="submitnf" id="submitnf" class="signup_not" value=" " disabled ></p>    
 				
-				   <script src="http://67.222.18.91/~propel/locator/wp-content/themes/physician/chosen/chosen.jquery.js" type="text/javascript"></script>
+				   <script src="http://propelopens.com/locator/wp-content/themes/physician/chosen/chosen.jquery.js" type="text/javascript"></script>
 				  <script type="text/javascript"> 
 					var config = {
 					  '.chzn-select'           : {},
@@ -343,7 +343,7 @@ $coordes= $wpdb->get_results("select Lon, Lat from zipcodes where Zipcode='{$_GE
 
 <p id="sub_agree" style="margin-top:10px;"><input type="submit" name="submitnf" id="submitnf" class="signup_not" value=" " disabled ></p>    
 
-   <script src="http://67.222.18.91/~propel/locator/wp-content/themes/physician/chosen/chosen.jquery.js" type="text/javascript"></script>
+   <script src="http://propelopens.com/locator/wp-content/themes/physician/chosen/chosen.jquery.js" type="text/javascript"></script>
   <script type="text/javascript"> 
     var config = {
       '.chzn-select'           : {},

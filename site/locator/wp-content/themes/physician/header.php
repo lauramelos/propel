@@ -34,7 +34,7 @@
 <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/_css/jquery.loadmask.css" media="all" />
 <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/_css/li-scroller.css" media="all" />
 <!--link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/chosen/chosen.css" media="all" /-->
-<link rel="stylesheet" type="text/css" href="http://67.222.18.91/~propel/chosen/chosen.css" media="all" />
+<link rel="stylesheet" type="text/css" href="http://propelopens.com/chosen/chosen.css" media="all" />
 <!--[if IE]>
 <link rel="stylesheet" type="text/css" href="_css/main_ie.css" media="all" />
 <![endif]-->
@@ -74,7 +74,7 @@
 
 				<ul id="logo-text">
 
-					<li><a href="../../index.html" id="logo" style=" background:url('http://67.222.18.91/~propel/locator/wp-content/themes/physician/_img/global/logo.png'); width:181px; height:44px; display:block;"></a></li>
+					<li><a href="../../index.html" id="logo" style=" background:url('http://propelopens.com/locator/wp-content/themes/physician/_img/global/logo.png'); width:181px; height:44px; display:block;"></a></li>
 
 					<li class="copy"><p>Opens.</p><p>Delivers.</p><p>Maintains.</p></li>
 
@@ -109,7 +109,7 @@
 
 					<li id="for-patients">
 
-						<a href="http://67.222.18.91/~propel/patients-what_is_chronic_sinusitis.html" class="item">For Patients</a>
+						<a href="http://propelopens.com/patients-what_is_chronic_sinusitis.html" class="item">For Patients</a>
 
 						<div class="subnav">
 
@@ -117,13 +117,13 @@
 
 								<ul class="sub">
 
-									<li class="first"><a href="http://67.222.18.91/~propel/patients-what_is_chronic_sinusitis.html" class="bolt"><span>What is Chronic Sinusitis?</span></a></li>
+									<li class="first"><a href="http://propelopens.com/patients-what_is_chronic_sinusitis.html" class="bolt"><span>What is Chronic Sinusitis?</span></a></li>
 
-	                <li><a href="http://67.222.18.91/~propel/patients-treatments_for_chronic_sinusitis.html" class="plus"><span>Treatments for Chronic Sinusitis</span></a></li>
+	                <li><a href="http://propelopens.com/patients-treatments_for_chronic_sinusitis.html" class="plus"><span>Treatments for Chronic Sinusitis</span></a></li>
 
-	                <li><a href="http://67.222.18.91/~propel/patients-benefits_of_propel.html" class="burst"><span>Benefits of PROPEL<span style="font-size:0.6em; vertical-align:top; line-height:14px; padding:0">&reg;</span></span></a></li>
+	                <li><a href="http://propelopens.com/patients-benefits_of_propel.html" class="burst"><span>Benefits of PROPEL<span style="font-size:0.6em; vertical-align:top; line-height:14px; padding:0">&reg;</span></span></a></li>
 
-	                <li><a href="http://67.222.18.91/~propel/patients-additional_resources.html" class="doc"><span>Additional Resources</span></a></li>
+	                <li><a href="http://propelopens.com/patients-additional_resources.html" class="doc"><span>Additional Resources</span></a></li>
 
 								</ul>
 
@@ -135,7 +135,7 @@
 
 					<li id="propel-advantage">
 
-						<a href="http://67.222.18.91/~propel/advantage-propel_steroid_releasing_implant.html" class="item">The PROPEL<span style="font-size:0.6em; vertical-align:top; margin-left:-1px; ">&reg;</span> advantage</a>
+						<a href="http://propelopens.com/advantage-propel_steroid_releasing_implant.html" class="item">The PROPEL<span style="font-size:0.6em; vertical-align:top; margin-left:-1px; ">&reg;</span> advantage</a>
 
 						<div class="subnav">
 
@@ -143,15 +143,15 @@
 
 								<ul class="sub">
 
-									<li class="first"><a href="http://67.222.18.91/~propel/advantage-propel_steroid_releasing_implant.html" class="cog"><span>PROPEL<span style="font-size:0.6em; vertical-align:top; line-height:14px; padding:0px;">&reg;</span> Steroid-Releasing Implant</span></a></li>
+									<li class="first"><a href="http://propelopens.com/advantage-propel_steroid_releasing_implant.html" class="cog"><span>PROPEL<span style="font-size:0.6em; vertical-align:top; line-height:14px; padding:0px;">&reg;</span> Steroid-Releasing Implant</span></a></li>
 
-	                <li><a href="http://67.222.18.91/~propel/advantage-propel_mini.html" class="twocog"><span>PROPEL<span style="font-size:0.6em; vertical-align:top; line-height:14px; padding:0px;">&reg;</span> mini Steroid-Releasing Implant</span></a></li>
+	                <li><a href="http://propelopens.com/advantage-propel_mini.html" class="twocog"><span>PROPEL<span style="font-size:0.6em; vertical-align:top; line-height:14px; padding:0px;">&reg;</span> mini Steroid-Releasing Implant</span></a></li>
 
-	                <li><a href="http://67.222.18.91/~propel/advantage-how_it_works.html" class="gears"><span>How It Works</span></a></li>
+	                <li><a href="http://propelopens.com/advantage-how_it_works.html" class="gears"><span>How It Works</span></a></li>
 
-	                <li><a href="http://67.222.18.91/~propel/advantage-clinical_data.html" class="bars"><span>Clinical Data</span></a></li>
+	                <li><a href="http://propelopens.com/advantage-clinical_data.html" class="bars"><span>Clinical Data</span></a></li>
 
-	                <li><a href="http://67.222.18.91/~propel/advantage-publications.html" class="newspaper"><span>Publications</span></a></li>
+	                <li><a href="http://propelopens.com/advantage-publications.html" class="newspaper"><span>Publications</span></a></li>
 
 								</ul>
 
@@ -163,7 +163,7 @@
 
 					<li id="newsroom">
 
-						<a href="http://67.222.18.91/~propel/newsroom.html" class="item">Newsroom</a>
+						<a href="http://propelopens.com/newsroom.html" class="item">Newsroom</a>
 
 						<div class="subnav">
 
@@ -171,13 +171,13 @@
 
 								<ul class="sub">
 
-									<li class="first"><a href="http://67.222.18.91/~propel/newsroom.html" class="microphone"><span>Newsroom</span></a></li>
+									<li class="first"><a href="http://propelopens.com/newsroom.html" class="microphone"><span>Newsroom</span></a></li>
 
-	                <li><a href="http://67.222.18.91/~propel/news-press_releases.html" class="doc"><span>Press Releases</span></a></li>
+	                <li><a href="http://propelopens.com/news-press_releases.html" class="doc"><span>Press Releases</span></a></li>
 
-	                <li><a href="http://67.222.18.91/~propel/news-in_the_news.html" class="newspaper"><span>In The News</span></a></li>
+	                <li><a href="http://propelopens.com/news-in_the_news.html" class="newspaper"><span>In The News</span></a></li>
 
-	                <li><a href="http://67.222.18.91/~propel/news-events_and_awards.html" class="calendar"><span>Events &amp; Awards</span></a></li>
+	                <li><a href="http://propelopens.com/news-events_and_awards.html" class="calendar"><span>Events &amp; Awards</span></a></li>
 
 								</ul>
 
@@ -189,7 +189,7 @@
 
 					<li id="company">
 
-						<a href="http://67.222.18.91/~propel/co-about_us.html" class="item">Company</a>
+						<a href="http://propelopens.com/co-about_us.html" class="item">Company</a>
 
 						<div class="subnav">
 
@@ -197,17 +197,17 @@
 
 								<ul class="sub">
 
-									<li class="first"><a href="http://67.222.18.91/~propel/co-about_us.html" class="cog"><span>About Us</span></a></li>
+									<li class="first"><a href="http://propelopens.com/co-about_us.html" class="cog"><span>About Us</span></a></li>
 
-	                <li><a href="http://67.222.18.91/~propel/co-leadership_team.html" class="people"><span>Leadership Team</span></a></li>
+	                <li><a href="http://propelopens.com/co-leadership_team.html" class="people"><span>Leadership Team</span></a></li>
 
-	                <li><a href="http://67.222.18.91/~propel/co-board_of_directors.html" class="people"><span>Board of Directors</span></a></li>
+	                <li><a href="http://propelopens.com/co-board_of_directors.html" class="people"><span>Board of Directors</span></a></li>
 
-	                <li><a href="http://67.222.18.91/~propel/co-patents.html" class="person"><span>Patents</span></a></li>
+	                <li><a href="http://propelopens.com/co-patents.html" class="person"><span>Patents</span></a></li>
 
-	                <li><a href="http://67.222.18.91/~propel/co-careers.html" class="suitecase"><span>Careers</span></a></li>
+	                <li><a href="http://propelopens.com/co-careers.html" class="suitecase"><span>Careers</span></a></li>
 
-	                <li><a href="http://67.222.18.91/~propel/co-contact_us.html" class="mail"><span>Contact Us</span></a></li>
+	                <li><a href="http://propelopens.com/co-contact_us.html" class="mail"><span>Contact Us</span></a></li>
 
 								</ul>
 
@@ -225,7 +225,7 @@
 
 				<div id="top-tab">
 
-					<a href="http://67.222.18.91/~propel/co-about_us.html" style="background:url('http://67.222.18.91/~propel/locator/wp-content/themes/physician/_img/global/intersect_logo.png') no-repeat; width:139px; height:35px; display:block;"></a>
+					<a href="http://propelopens.com/co-about_us.html" style="background:url('http://propelopens.com/locator/wp-content/themes/physician/_img/global/intersect_logo.png') no-repeat; width:139px; height:35px; display:block;"></a>
 
 				</div>
 

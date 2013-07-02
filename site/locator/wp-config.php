@@ -18,18 +18,18 @@
 /** El nombre de tu base de datos de WordPress */
 define('WP_CACHE', true); //Added by WP-Cache Manager
 define( 'WPCACHEHOME', '/home/propel/public_html/locator/wp-content/plugins/wp-super-cache/' ); //Added by WP-Cache Manager
-define('DB_NAME', 'propel_search');
+define('DB_NAME', 'PhysicianLocator');
 
 /** Tu nombre de usuario de MySQL */
 //define('DB_USER', 'propel_user');
-define('DB_USER', 'root');
+define('DB_USER', 'aleung');
 
 /** Tu contraseña de MySQL */
 //define('DB_PASSWORD', '123456');
-define('DB_PASSWORD', 'alfilasesino');
+define('DB_PASSWORD', 'ient4AL');
 
 /** Host de MySQL (es muy probable que no necesites cambiarlo) */
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'mysql5.serveronline.net');
 
 /** Codificación de caracteres para la base de datos. */
 define('DB_CHARSET', 'utf8');

@@ -1,5 +1,5 @@
 	document.writeln('<div id="locatorWrapper" style="padding:0px 50px 45px 50px;">' + 
-				   '<form method="post" action="http://67.222.18.91/~propel/locator/?page_id=4" id="locator">' + 
+				   '<form method="post" action="http://propelopens.com/locator/?page_id=4" id="locator">' + 
 				   '<div style="float:left;">' +
 				   '<div class="physician_field" id="emailDiv">' + 
 				   '<input type="text" name="czip" id="czip" class="physician_field" style="color:#949590;" value="Zip code*" onclick="cargar()">' + '</div>' +

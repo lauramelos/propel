@@ -152,19 +152,19 @@ $post = get_post($post_id);
 		
 		$result = '<table width="576" align="center">
 <tr>
-		<td><img src="http://67.222.18.91/~propel/locator/wp-content/themes/physician/_img/mailtop.jpg" width="576"/></td>
+		<td><img src="http://propelopens.com/locator/wp-content/themes/physician/_img/mailtop.jpg" width="576"/></td>
 		</tr>
 </table>
 <table width="506" align="center">
 		<tr>
 		<td colspan="2">
-		<img src="http://67.222.18.91/~propel/locator/wp-content/themes/physician/_img/mailapropel.jpg"/>
-		<p style="color:#9c9c9c; font-size:12px; font-family:Arial, Helvetica, sans-serif;line-height:22px">A new PROPEL physician has been add in your area. Please <a href="http://67.222.18.91/~propel/" style="color:#feb61c; text-decoration:none;">visit our website</a> or contact a physician near you to find out more about PROPEL.</p>
+		<img src="http://propelopens.com/locator/wp-content/themes/physician/_img/mailapropel.jpg"/>
+		<p style="color:#9c9c9c; font-size:12px; font-family:Arial, Helvetica, sans-serif;line-height:22px">A new PROPEL physician has been add in your area. Please <a href="http://propelopens.com/" style="color:#feb61c; text-decoration:none;">visit our website</a> or contact a physician near you to find out more about PROPEL.</p>
   		</td>
  		</tr>
  		
  		<tr>
-  		<td colspan="2" style="text-align:center"><img src="http://67.222.18.91/~propel/locator/wp-content/themes/physician/_img/mailine.jpg"/></td>
+  		<td colspan="2" style="text-align:center"><img src="http://propelopens.com/locator/wp-content/themes/physician/_img/mailine.jpg"/></td>
 		</tr>
 		<tr>
 		<td width="180">
@@ -184,20 +184,20 @@ $post = get_post($post_id);
 		<td width="306" align="right">';
    		
 		if ($lat<>0) 
-		$result .='<img src="http://maps.google.com/maps/api/staticmap?center='.$latlng.'&zoom=16&size=260x83&sensor=false&markers=icon:http://67.222.18.91/~propel/_img/content/map-marker2.png|'.$latlng.'" />';
+		$result .='<img src="http://maps.google.com/maps/api/staticmap?center='.$latlng.'&zoom=16&size=260x83&sensor=false&markers=icon:http://propelopens.com/_img/content/map-marker2.png|'.$latlng.'" />';
 		else
-		$result .='<img src="http://maps.google.com/maps/api/staticmap?center='.$direc.'&zoom=16&size=260x83&sensor=false&markers=icon:http://67.222.18.91/~propel/_img/content/map-marker2.png|'.$direc.'" />';
+		$result .='<img src="http://maps.google.com/maps/api/staticmap?center='.$direc.'&zoom=16&size=260x83&sensor=false&markers=icon:http://propelopens.com/_img/content/map-marker2.png|'.$direc.'" />';
 		
 		$result3='</tr>
 		</table><p></p>
 		
 		<table width="576" align="center" bgcolor="#dcdcdc" cellpadding="6">
 		<tr >
-		<td width="100" style="padding:0 30px;"><a href="http://67.222.18.91/~propel/locator/?page_id=04" style="color:#b4b4b1; font-size:12px; font-family:Arial, Helvetica, sans-serif; font-weight:600; text-decoration:none;"><img src="http://67.222.18.91/~propel/_img/mailfind.png" height="15" /> Find Propel</a></td>
+		<td width="100" style="padding:0 30px;"><a href="http://propelopens.com/locator/?page_id=04" style="color:#b4b4b1; font-size:12px; font-family:Arial, Helvetica, sans-serif; font-weight:600; text-decoration:none;"><img src="http://propelopens.com/_img/mailfind.png" height="15" /> Find Propel</a></td>
   
-  		<td width="100"><a href="http://67.222.18.91/~propel/co-contact_us.html" style="color:#b4b4b1; font-size:12px; font-family:Arial, Helvetica, sans-serif; font-weight:600; text-decoration:none;"> <img src="http://67.222.18.91/~propel/_img/mailcontact.png" /> Contact Us</a></td>
+  		<td width="100"><a href="http://propelopens.com/co-contact_us.html" style="color:#b4b4b1; font-size:12px; font-family:Arial, Helvetica, sans-serif; font-weight:600; text-decoration:none;"> <img src="http://propelopens.com/_img/mailcontact.png" /> Contact Us</a></td>
   
-  		<td style="text-align:right; padding-right:30px"><img src="http://67.222.18.91/~propel/_img/global/intersect_logo.png" /></td>
+  		<td style="text-align:right; padding-right:30px"><img src="http://propelopens.com/_img/global/intersect_logo.png" /></td>
  		</tr>
  		<tr>
   		<td colspan="3">

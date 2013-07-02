@@ -2,13 +2,13 @@
 		<div id="footer" style="background-color:#e0e0dd">
 <div id="copy">
       © 2013 Intersect ENT Inc. All rights reserved. <br>
-      INTERSECT ENT<span style="font-size: 0.75em; vertical-align:top; line-height:1.1em;">®</span> and PROPEL<span style="font-size: 0.75em; vertical-align:top; line-height:1.1em;">®</span> are trademarks of Intersect ENT, Inc.<br><a href="/~propel/privacy-policy.html">Privacy Policy</a> | <a href="/~propel/terms-of-use.html">Terms Of Use</a>
+      INTERSECT ENT<span style="font-size: 0.75em; vertical-align:top; line-height:1.1em;">®</span> and PROPEL<span style="font-size: 0.75em; vertical-align:top; line-height:1.1em;">®</span> are trademarks of Intersect ENT, Inc.<br><a href="http://propelopens.com/privacy-policy.html">Privacy Policy</a> | <a href="http://propelopens.com/terms-of-use.html">Terms Of Use</a>
       </div>      
       <div id="links" style="background-color:#e0e0dd">
 				<a href="#physician_locator" rel="colorbox" onmouseover="getElementById('footerFind').style.backgroundPosition='0px -25px';" onmouseout="getElementById('footerFind').style.backgroundPosition='0px 0px';" class="cboxElement"><div id="footerFind" style="background-position: 0px 0px;">Find PROPEL</div></a>
 				<!-- <a href="#physician_locator" ><div id="footerFind">Find PROPEL</div></a>-->
-				<a href="http://67.222.18.91/~propel/co-careers.html" onMouseOver="getElementById('footerCareer').style.backgroundPosition='0px -25px';" onMouseOut="getElementById('footerCareer').style.backgroundPosition='0px 0px';"><div id="footerCareer">Careers</div></a>
-				<a href="http://67.222.18.91/~propel/co-contact_us.html" onMouseOver="getElementById('footerContact').style.backgroundPosition='0px -25px';" onMouseOut="getElementById('footerContact').style.backgroundPosition='0px 0px';"><div id="footerContact">Contact Us</div></a>
+				<a href="http://propelopens.com/co-careers.html" onMouseOver="getElementById('footerCareer').style.backgroundPosition='0px -25px';" onMouseOut="getElementById('footerCareer').style.backgroundPosition='0px 0px';"><div id="footerCareer">Careers</div></a>
+				<a href="http://propelopens.com/co-contact_us.html" onMouseOver="getElementById('footerContact').style.backgroundPosition='0px -25px';" onMouseOut="getElementById('footerContact').style.backgroundPosition='0px 0px';"><div id="footerContact">Contact Us</div></a>
 			</div>
 		</div>
 		<!-- Footer END -->

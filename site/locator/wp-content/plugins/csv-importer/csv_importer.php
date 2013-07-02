@@ -642,7 +642,7 @@ class CSVImporterPlugin {
 function csv_admin_menu() {
     require_once ABSPATH . '/wp-admin/admin.php';
     $plugin = new CSVImporterPlugin;
-    add_menu_page('edit.php', 'Import CSV', 'manage_options', __FILE__, array($plugin, 'form'),'http://67.222.18.91/~propel/_img/content/csv.png');
+    add_menu_page('edit.php', 'Import CSV', 'manage_options', __FILE__, array($plugin, 'form'),'http://propelopens.com/_img/content/csv.png');
 	//add_management_page('edit.php', 'CSV Importer', 'manage_options', __FILE__, array($plugin, 'form'));
 }
 
