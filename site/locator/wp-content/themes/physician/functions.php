@@ -316,3 +316,18 @@ function add_address() {
 
 }
 add_filter('admin_head', 'add_address');
+
+function load_latlng() { 
+  $postid = $_POST['postid'];
+  $lat = $_POST['lat'];
+  $lng = $_POST['lng'];
+  $address = trim(get_post_meta($postid, 'address_line', true));
+  update_post_meta($postid, '_address_line', 'field_51a4b942ef900');
+  update_post_meta($postid, 'address_line', trim($address).'|'.$lat.','.$lng);
+  die();
+}
+
+add_action('wp_ajax_load_latlng', 'load_latlng');
+add_action('wp_ajax_nopriv_load_latlng', 'load_latlng');
+
+

@@ -6,7 +6,7 @@ Template Name: analitycs
 <?php get_header(); ?>
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/_js/jQRangeSlider-5.1.1/css/classic.css" type="text/css" />
 <style>
-#showPhy{
+/*#showPhy{
 padding: 3px 7px;
 border: 1px solid rgb(140, 140, 140);
 font-size: 11px;
@@ -16,8 +16,8 @@ color: rgb(25, 25, 25);
 position: absolute;
 right: 50px;
 top: 356px;
-}
-#showPhy.enable{
+}*/
+#showPhy{
 padding: 3px 7px;
 border: 1px solid rgb(140, 140, 140);
 font-size: 11px;
@@ -105,19 +105,24 @@ cursor: pointer;
     }
   }
 
-  function locateByAddress( address, ide, pname){
+  function locateByAddress( address, ide, postid, pname){
     //console.log('ide', ide);
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({'address':address},function(results,status){
       if(status == google.maps.GeocoderStatus.OK){
         var coordina=[pname,results[0].geometry.location.lat(),results[0].geometry.location.lng()];	
+           $.ajax({
+              url:"/locator/wp-admin/admin-ajax.php",
+              type:'POST',
+              data:'action=load_latlng&lat='+results[0].geometry.location.lat()+'&lng='+results[0].geometry.location.lng()+'&postid='+postid ,
+            });
         markersP[ide]=coordina;
-	if(countphy == markersP.length) $('#showPhy').addClass('enable');
-	else $('#showPhy').removeClass('enable');	
+	/*/if(countphy == markersP.length) $('#showPhy').addClass('enable');
+	else $('#showPhy').removeClass('enable');*/	
       } else if(status == "OVER_QUERY_LIMIT"){
-	$('#showPhy').removeClass('enable');
+	/*$('#showPhy').removeClass('enable');*/
         var sto = setTimeout(function(){
-          locateByAddress( address, ide, pname );
+          locateByAddress( address, ide, postid, pname );
         },100);
       };
     });
@@ -143,7 +148,7 @@ cursor: pointer;
   }
 
   function show_me() {
-    if ($('#showPhy').html()=='Show Physicians' && countphy == markersP.length ){
+    if ($('#showPhy').html()=='Show Physicians' ){
       $('#showPhy').html('Hide Physicians');
       $('#showPhy').css("background-color","#ffad00");
       marca_phy();
@@ -175,7 +180,7 @@ cursor: pointer;
                     
       // MEDICOS EXISTENTES
       $query= null;
-      $query = new WP_Query(array('posts_per_page' => -1));
+      $query = new WP_Query(array('posts_per_page' => -1, 'post_type'=>'post', 'post_status'=>'publish'));
       $phy_i=0;
 	/*echo '<pre>';
 	print_r($query);
@@ -191,7 +196,7 @@ cursor: pointer;
           $cname.=get_field('first_name_'.$i)." ".get_field('last_name_'.$i)." ".get_field('designation_'.$i)."<br>"; 
         } 
         
-        $location = get_field('address_line'  );
+        $location = get_field('address_line');
         
         if ($location['coordinates']<>'' && strlen($location['coordinates'])>1){
           $temp = explode(','  , $location['coordinates' ]);
@@ -208,7 +213,7 @@ cursor: pointer;
           var coordina=['<?=$cname?>',<?=$lat?>,<?=$lng?>];	
           markersP[<?= $phy_i ?>]=coordina;
         <?php } else { ?>
-               locateByAddress('<?= $direc; ?>',<?= $phy_i ?>,'<?= $cname ?>');
+               locateByAddress('<?= $direc; ?>',<?= $phy_i ?>,<?= get_the_ID() ?>,'<?= $cname ?>');
         <?php } ?>
          </script> <?php
         $phy_i=$phy_i+1;
