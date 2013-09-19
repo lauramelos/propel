@@ -8,7 +8,7 @@ function my_remove_menu_pages() {
   remove_menu_page('edit-comments.php');
   remove_menu_page('plugins.php');
   remove_menu_page('edit.php?post_type=page');
-  remove_menu_page('users.php');
+//  remove_menu_page('users.php');
   remove_menu_page('options-general.php');
   remove_menu_page('upload.php');
   remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=category');
